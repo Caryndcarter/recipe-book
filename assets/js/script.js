@@ -1,5 +1,6 @@
 const homeButton = document.querySelector("#home-button");
 const addRecipeButton = document.querySelector("#add-recipe-button");
+const main = document.querySelector('main');
 
 let allRecipes = [];
 
@@ -9,7 +10,28 @@ function navigateHome() {
 
 function navigateAddRecipe() {
     console.log('adding new recipe');
+    buildElement(); 
+    buildForm(); 
 }
+
+
+function buildElement () {
+    const formEL = document.createElement('form');
+    main.appendChild(formEL);
+    
+    const h2EL = document.createElement('h2');
+    const labelEL = document.createElement('label');
+    labelEL.setAttribute("value", "Title");
+    const inputEL = document.createElement("input");
+
+    formEL.appendChild(h2EL);
+    formEL.appendChild(labelEL);
+    formEL.appendChild(inputEL);
+
+    h2EL.textContent = "Recipe Description"; 
+};
+
+
 
 
 function addNewRecipe(recipeTitle, recipeDescription, recipeServings, recipeCookTime, recipeIngredients, recipeSteps) {
