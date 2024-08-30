@@ -11,31 +11,31 @@ const form = document.createElement("form");
 const title = document.createElement("input");
 title.setAttribute("type", "text");
 title.setAttribute("label", "Title");
-title.setAttribute("name", "title");
+title.setAttribute("id", "title");
 title.setAttribute("placeholder", "Recipe Title");
 
  // Create an input element for description
  const description = document.createElement("textarea");
  description.setAttribute("type", "text");
- description.setAttribute("name", "description");
+ description.setAttribute("id", "description");
  description.setAttribute("placeholder", "Describe the recipe");
 
  // Create an input element for time
  const time = document.createElement("input");
  time.setAttribute("type", "text");
- time.setAttribute("name", "cook");
+ time.setAttribute("id", "cook");
  time.setAttribute("placeholder", "Total Time to Prep and Cook");
 
 // Create an input element for servings
 const servings = document.createElement("input");
 servings.setAttribute("type", "number");
-servings.setAttribute("name", "text");
+servings.setAttribute("id", "text");
 servings.setAttribute("placeholder", "Servings");
 
 // Create an input element for ingredient
 const ingredient = document.createElement("input");
 ingredient.setAttribute("type", "text");
-ingredient.setAttribute("name", "ingredient");
+ingredient.setAttribute("id", "ingredient");
 ingredient.setAttribute("placeholder", "Ingredient");
 
 // create a submit button
