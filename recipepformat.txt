@@ -1,0 +1,44 @@
+ <div class="container-fluid">
+        </div>
+
+        <div class="container-fluid">
+            <div class="row box-container">
+                <div class="col-md-8 px-4">
+                    <div class="box bg-light p-3">
+                        <h2 id="title">Pie Crust Cookies</h2>
+                        <p id="description">Flaky and buttery cookies with a delicious cinnamon sugar crust.</p>
+                        <dl class="row">
+                            <dt class="col-sm-3">Servings</dt>
+                            <dd class="col-sm-9" id="servings">12</dd>
+                            
+                            <dt class="col-sm-3">Time to Cook</dt>
+                            <dd class="col-sm-9" id="time">50 mins</dd>
+                            
+                            <dt class="col-sm-3">Ingredients</dt>
+                            <dd class="col-sm-9" id="ingredients">
+                                <li>1 premade pie crust</li>
+                                <li>all purpose flour for dusting</li>
+                                <li>1 large egg</li>
+                                <li>1 teaspoon whole milk</li>
+                                <li>2 tablespoons granulated sugar</li>
+                                <li>3/4 teaspoon ground cinnamon</li>
+                                <li>1/8 teaspoon kosher salt</li>
+                                <li>1 1/2 tablespoons unsalted butter, melted and cooled</li>
+                            </dd>
+                          
+                            <dt class="col-sm-3">Cooking Steps</dt>
+                            <dd class="col-sm-9" id="steps">
+                            <ol>
+                                <li>Gather all ingredients. Preheat the oven to 375 degrees F (190 degrees C). Line 2 large rimmed baking sheets with parchment paper; set aside.</li>
+                                <li>Roll premade pie crust to 1/8-inch thickness on a lightly floured work surface, and cut using desired cookie cutter shapes.</li>
+                                <li>Transfer cut-outs to prepared baking sheets, leaving about a 1/2-inch space between each cookie. Repeat with remaining dough, rerolling scraps once.</li>
+                                <li>Whisk together egg and milk in a small bowl until combined. Using a pastry brush, brush the tops of each cookie evenly with egg mixture; discard remaining egg mixture. Whisk together sugar, cinnamon, and salt in a small bowl until evenly combined, sprinkle evenly over brushed cookies.</li>
+                                <li>Bake cookies, one baking sheet at a time, in the preheated oven until the edges and bottoms of cookies just become golden brown, about 15 minutes.</li>
+                                <li>Remove from oven and brush tops of each cookie lightly with melted butter, let cool slightly on baking sheet, about 5 minutes. Serve warm. </li>           
+                            </ol>
+                            </dd>
+                          </dl>
+                    </div>  
+                </div>
+            </div>
+        </div>
