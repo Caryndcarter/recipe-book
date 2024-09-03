@@ -29,6 +29,17 @@ let ingredientsArray = [];
 let stepsArray = [];  
 
 
+//Recipe Object 
+let recipe = {
+    title: titleInput.value, 
+    description: descriptionInput.value,
+    servings: servingsInput.value,
+    time: timeInput.value,
+    ingredients: ingredientsArray,
+    steps: stepsArray
+    
+} 
+
 //Handle the error if there is not enough info submitted in the form
 
 let errorMessage = document.querySelector('#errorMsg')
@@ -46,7 +57,7 @@ if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !tim
      
     } else {
        
-        let recipe = {
+        recipe = {
             title: titleInput.value, 
             description: descriptionInput.value,
             servings: servingsInput.value,
@@ -54,7 +65,7 @@ if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !tim
             ingredients: ingredientsArray,
             steps: stepsArray
             
-        }     
+        }   
 
     storeLocalStorage(recipe);
     renderRecipeList(recipe);
@@ -122,9 +133,6 @@ function renderIngredients(event) {
 
     ingredientsArray.push(ingredientValue); 
     console.log(ingredientsArray);
-
-
-    
 
 }
 

@@ -158,8 +158,8 @@ footer button:hover {
 
 aside {
     display: flex;
-    flex-direction: column; /* Stacks items vertically */
-    gap: 20px; /* Adds space between articles */
+    flex-direction: column; 
+    gap: 20px;
   justify-content: center;
   align-items: center;
 }
