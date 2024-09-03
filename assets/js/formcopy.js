@@ -3,6 +3,7 @@
 //Create variable for the aside element
 
 const aside = document.querySelector('aside');
+const recipePicture = document.querySelector('.headerimage')
 
 // Create form variables that selects the form elements
 
@@ -74,7 +75,8 @@ function storeLocalStorage(recipe) {
 // Create a function that builds an element and appends it to the DOM
 
 function buildElement (recipeList) {
-   
+    
+    aside.append(recipePicture);
     const articleEl = document.createElement('article');
     aside.appendChild(articleEl);
 
@@ -139,7 +141,7 @@ function buildStepsElement (recipeList) {
     articleEl.appendChild(individualstepsEL);
 
     stepsEL.textContent = "Recipe Steps"; 
-    individualstepsEL.textContent = recipeList.steps;
+    individualstepsEL.textContent = recipeList;
   
 };
 
@@ -149,10 +151,10 @@ function renderSteps(event) {
 
     const recipeList = JSON.parse(localStorage.getItem('recipes'));
     console.log(recipeList);
-    console.log(recipeList.steps);
+    console.log(recipeList[0].steps);
     
    // for (let i = 0; i <stepsList.length; i++) {
-        buildStepsElement(recipeList);
+        buildStepsElement(recipeList[0].steps);
     }
 
 
