@@ -130,6 +130,7 @@ main {
   flex-grow: 1;
   padding: 20px;
   background-color: var(--main-alt);
+  margin-bottom: 70px;
 }
 
 footer {
@@ -139,6 +140,19 @@ footer {
   bottom: 0;
   width: 100%;
   color: white; 
+}
+
+footer button {
+    padding: 10px 20px;
+    background-color: #f39c12; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+footer button:hover {
+    background-color: #e67e22; 
 }
 
 aside {
@@ -236,7 +250,7 @@ figcaption.blockquote-footer {
 }
 
 .headerimage {
-    width: 70%;
+    width: 80%;
     height: auto;
     max-width: 700px;
 }
@@ -250,3 +264,10 @@ figcaption.blockquote-footer {
   height: auto; /* Maintains the aspect ratio */
   max-width: 100px; /* Optional: maximum width */
 }
+
+#error {
+    color: var(--error);
+    opacity: .75;
+    position: absolute;
+    bottom: -2rem;
+  }

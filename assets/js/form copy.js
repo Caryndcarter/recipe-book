@@ -1,6 +1,6 @@
 // Create a variable that selects the form element
 
-const form = document.querySelector('form');
+const form = document.querySelector('#firstForm');
 const titleInput = document.querySelector('#title');
 const descriptionInput = document.querySelector('#description');
 const servingsInput = document.querySelector('#servings');
