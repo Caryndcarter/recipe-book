@@ -9,28 +9,8 @@ function navigateHome() {
 }
 
 function navigateAddRecipe() {
-    console.log('adding new recipe');
-    buildElement(); 
-    buildForm(); 
+  redirectPage("recipe-form.html");
 }
-
-
-function buildElement () {
-    const formEL = document.createElement('form');
-    main.appendChild(formEL);
-    
-    const h2EL = document.createElement('h2');
-    const labelEL = document.createElement('label');
-    labelEL.setAttribute("value", "Title");
-    const inputEL = document.createElement("input");
-
-    formEL.appendChild(h2EL);
-    formEL.appendChild(labelEL);
-    formEL.appendChild(inputEL);
-
-    h2EL.textContent = "Recipe Description"; 
-};
-
 
 
 
