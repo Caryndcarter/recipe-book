@@ -24,6 +24,10 @@ const submitIngredient = document.querySelector('#submitIngredient');
 const submitStep = document.querySelector('#submitStep');
 
 
+//Create arrays for ingredients and steps
+let ingredientsArray = [];
+let stepsArray = [];  
+
 
 //Handle the error if there is not enough info submitted in the form
 
@@ -47,8 +51,8 @@ if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !tim
             description: descriptionInput.value,
             servings: servingsInput.value,
             time: timeInput.value,
-            ingredients: ingredientInput.value,
-            steps: stepsInput.value
+            ingredients: ingredientsArray,
+            steps: stepsArray
             
         }     
 
@@ -112,8 +116,15 @@ function renderIngredients(event) {
     aside.querySelector('#ingredients').style.display = 'block'; 
 
     const listItem = document.createElement('li');
-   listItem.textContent = document.querySelector('#ingredient').value;
-   aside.querySelector('#ingredients ul').appendChild(listItem);
+    const ingredientValue = document.querySelector('#ingredient').value;
+    listItem.textContent = ingredientValue; 
+    aside.querySelector('#ingredients ul').appendChild(listItem);
+
+    ingredientsArray.push(ingredientValue); 
+    console.log(ingredientsArray);
+
+
+    
 
 }
 
@@ -126,10 +137,12 @@ function renderSteps(event) {
     aside.querySelector('#final').style.display = 'block'; 
 
     const stepItem = document.createElement('li');
-    stepItem.textContent = document.querySelector('#stepitem').value; 
+    const stepItemValue = document.querySelector('#stepitem').value; 
+    stepItem.textContent = stepItemValue; 
     aside.querySelector('#steps ol').appendChild(stepItem); 
 
-    console.log(stepItem);
+    stepsArray.push(stepItemValue); 
+    console.log(stepsArray);
 
 };
 
@@ -160,15 +173,14 @@ function submitButtonEvent (event) {
         
     };
 
-  // Add an event listener to the form on submit. Call the function to handle the form submission.
+
+// Add an event listener to the form on submit. Call the function to handle the form submission.
 
 submitBasics.addEventListener('click', recordRecipe); 
 
 submitIngredient.addEventListener('click', renderIngredients);
 
 submitStep.addEventListener('click', renderSteps);
-
-
 
 
 
