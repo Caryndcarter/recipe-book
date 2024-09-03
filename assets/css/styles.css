@@ -40,7 +40,7 @@ h6 {
 */
 :root {
   --body-bg: #FADE9B;
-  --main-bg: #B3B5BA;
+  --main-bg: #fff;
   --header-bg: #9BB8FA;
   --link-hover: #fff;
 }
@@ -94,7 +94,7 @@ header nav a:hover {
 
 main {
   margin-top: 70px;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
@@ -107,7 +107,7 @@ footer {
   text-align: center;
   padding: 10px;
   background-color: var(--header-bg);
-  position: absolute;
+  position: static;
   bottom: 0;
   width: 100%;
 }
