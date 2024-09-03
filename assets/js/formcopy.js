@@ -1,9 +1,11 @@
 //VARIABLES
 
-//Create variable for the aside element
+//Create variable for the aside elements
 
 const aside = document.querySelector('aside');
 const recipePicture = document.querySelector('.headerimage')
+const submitButton = document.querySelector('#final');
+const template = document.querySelector('template');
 
 // Create form variables that selects the form elements
 
@@ -12,8 +14,8 @@ const titleInput = document.querySelector('#title');
 const descriptionInput = document.querySelector('#description');
 const servingsInput = document.querySelector('#servings');
 const timeInput = document.querySelector('#time');
-const ingredientInput = document.querySelector('#ingredients');
-const stepsInput = document.querySelector('#steps');
+const ingredientInput = document.querySelector('#ingredient');
+const stepsInput = document.querySelector('#stepitem');
 
 //Create submit button variables for each section of the recipes
 
@@ -32,13 +34,14 @@ errorMessage.textContent = "";
 //FUNCTIONS 
 
 function recordRecipe(event) {
+    event.preventDefault();    
 
 if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !timeInput.value) {
-        event.preventDefault();
+      
         errorMessage.textContent = "Please complete the form."
      
     } else {
-        event.preventDefault();    
+       
         let recipe = {
             title: titleInput.value, 
             description: descriptionInput.value,
@@ -51,8 +54,6 @@ if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !tim
 
     storeLocalStorage(recipe);
     renderRecipeList(recipe);
-
-    //redirectPage("recipe-form-ingredients.html"); 
         
     }
  
@@ -72,51 +73,65 @@ function storeLocalStorage(recipe) {
 
 
 
-// Create a function that builds an element and appends it to the DOM
+// Create a function that builds the recipe form elements and appends them to the DOM
 
-function buildElement (recipeList) {
-    
-    aside.append(recipePicture);
-    const articleEl = document.createElement('article');
-    aside.appendChild(articleEl);
-
-    const titleEL = document.createElement('h2');
-    const blockquoteEL = document.createElement('blockquote');
-    const recipeItemsEL = document.createElement('ul');
-    const servingspEL = document.createElement('li');
-    const timepEL = document.createElement('li');
-
-    articleEl.appendChild(titleEL);
-    articleEl.appendChild(blockquoteEL);
-    articleEl.appendChild(recipeItemsEL);
-    articleEl.appendChild(servingspEL);
-    articleEl.appendChild(timepEL);
-
-    titleEL.textContent = recipeList.title; 
-    blockquoteEL.textContent = recipeList.description; 
-    servingspEL.textContent = recipeList.servings;
-    timepEL.textContent = recipeList.time;
+function buildRecipeElement (recipeList) {
   
+    const recipeInfo = template.content.cloneNode(true);
+
+    recipeInfo.querySelector('h2').textContent = recipeList.title;
+    recipeInfo.querySelector('blockquote').textContent = recipeList.description;
+    recipeInfo.querySelector('#servings').textContent = recipeList.servings;
+    recipeInfo.querySelector('#time').textContent = recipeList.time;
+
+    recipeInfo.querySelector('#ingredients').style.display = 'none'; 
+    recipeInfo.querySelector('#steps').style.display = 'none'; 
+    recipeInfo.querySelector('#final').style.display = 'none';
+  
+    aside.appendChild(recipeInfo);
 };
 
 
 function renderRecipeList() {
-
-    console.log("renderRecipeList"); 
      
-    aside.innerHTML = ""; 
-    
     const recipeList = JSON.parse(localStorage.getItem('recipes'));
     
     if (recipeList !== null) {
 
         for (let i = 0; i <recipeList.length; i++) {
-            buildElement(recipeList[i]);
-        }
-        
-  }
+            buildRecipeElement(recipeList[i]);
+        }      
+    }
 }; 
 
+
+
+function renderIngredients(event) {
+    event.preventDefault(); 
+
+    aside.querySelector('#ingredients').style.display = 'block'; 
+
+    const listItem = document.createElement('li');
+   listItem.textContent = document.querySelector('#ingredient').value;
+   aside.querySelector('#ingredients ul').appendChild(listItem);
+
+}
+
+
+
+function renderSteps(event) {
+    event.preventDefault(); 
+
+    aside.querySelector('#steps').style.display = 'block';
+    aside.querySelector('#final').style.display = 'block'; 
+
+    const stepItem = document.createElement('li');
+    stepItem.textContent = document.querySelector('#stepitem').value; 
+    aside.querySelector('#steps ol').appendChild(stepItem); 
+
+    console.log(stepItem);
+
+};
 
 
 function readLocalStorage() {
@@ -128,49 +143,32 @@ function readLocalStorage() {
 };
 
 
-function buildStepsElement (recipeList) {
-    const articleEl = document.createElement('article');
-    aside.appendChild(articleEl);
+let redirectURL = '';
 
-    const stepsEL = document.createElement('h2');
-    const recipeItemsEL = document.createElement('ol');
-    const individualstepsEL = document.createElement('li');
-
-    articleEl.appendChild(stepsEL);
-    articleEl.appendChild(recipeItemsEL);
-    articleEl.appendChild(individualstepsEL);
-
-    stepsEL.textContent = "Recipe Steps"; 
-    individualstepsEL.textContent = recipeList;
-  
-};
+const redirectPage = function (url) {
+        console.log("im alive");
+          redirectURL = url;
+          location.assign(url);
+     };
 
 
-function renderSteps(event) {
-    event.preventDefault(); 
-
-    const recipeList = JSON.parse(localStorage.getItem('recipes'));
-    console.log(recipeList);
-    console.log(recipeList[0].steps);
+function submitButtonEvent (event) {
     
-   // for (let i = 0; i <stepsList.length; i++) {
-        buildStepsElement(recipeList[0].steps);
-    }
-
-
-
-
+        event.preventDefault(); 
+        const submit = querySelector('#final');
+        submit.addEventListener('click', redirectPage("recipe-final.html"));
+        
+    };
 
   // Add an event listener to the form on submit. Call the function to handle the form submission.
-//firstForm.addEventListener('submit', recordRecipe, renderRecipeList);
-
 
 submitBasics.addEventListener('click', recordRecipe); 
 
-
-submitIngredient.addEventListener('click', renderRecipeList);
+submitIngredient.addEventListener('click', renderIngredients);
 
 submitStep.addEventListener('click', renderSteps);
+
+
 
 
 
@@ -182,11 +180,5 @@ function clearStorage () {
 } 
   
 
-let redirectURL = '';
-
-const redirectPage = function (url) {
-      redirectURL = url;
-      location.assign(url);
-    };
 
 

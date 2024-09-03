@@ -197,7 +197,6 @@ article {
   }
   
   article p {
-    position: absolute;
     left: 1rem;
     bottom: 0.5rem;
     opacity: .75;
