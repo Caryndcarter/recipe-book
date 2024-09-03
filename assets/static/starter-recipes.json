@@ -1,32 +1,36 @@
 {
     "staticRecipes": [
         {
-            "title": "Classic Spaghetti Carbonara",
-            "description": "A traditional Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
-            "image": "https://placehold.co/600x400",
-            "servings": 4,
-            "cookTime": "20 minutes",
+            "title": "Spaghetti Carbonara",
+            "description": "This bacon carbonara is a super rich, classic \"bacon and egg\" spaghetti dish that's great to serve for company. This recipe also makes an unusual brunch offering.",
+            "image": "https://www.allrecipes.com/thmb/zJzTLhtUWknHXVoFIzysljJ9wR8=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/11973-spaghetti-carbonara-ii-DDMFS-4x3-6edea51e421e4457ac0c3269f3be5157.jpg",
+            "servings": 8,
+            "cookTime": "40 minutes",
             "ingredients": [
-                "Spaghetti",
-                "Pancetta",
-                "Eggs",
-                "Parmesan cheese",
-                "Black pepper",
-                "Salt"
+                "1 pound spaghetti",
+                "2 tablespoons olive oil, divided, or as needed",
+                "8 slices bacon, diced",
+                "1 onion, chopped",
+                "1 clove garlic, minced",
+                "1/4 cup dry white wine",
+                "4 large eggs, beaten",
+                "1/2 cup grated Parmesan cheese",
+                "salt and black pepper to taste",
+                "2 tablespoons chopped fresh parsley",
+                "2 tablespoons grated Parmesan cheese"
             ],
             "steps": [
-                "Cook the spaghetti in a large pot of salted boiling water until al dente.",
-                "In a separate pan, cook the pancetta until crispy.",
-                "In a bowl, whisk together the eggs and grated Parmesan cheese.",
-                "Drain the spaghetti, reserving some of the pasta water.",
-                "Quickly toss the hot spaghetti with the pancetta, egg mixture, and a little pasta water.",
-                "Season with salt and freshly ground black pepper, and serve immediately."
+                "Bring a large pot of lightly salted water to a boil. Cook spaghetti in boiling water, stirring occasionally, until tender yet firm to the bite, about 12 minutes. Drain, toss spaghetti with 1 tablespoon olive oil, and set aside.",
+                "Place diced bacon in a large skillet over medium heat; cook and stir until evenly browned, about 10 minutes. Drain bacon on paper towels, reserving 2 tablespoons bacon fat in the skillet.",
+                "Add 1 tablespoon olive oil to bacon fat in the skillet. Add chopped onion and cook over medium heat until onion is translucent. Add minced garlic and cook until fragrant, about 1 minute. Add wine and cook 1 minute more.",
+                "Return cooked bacon to the skillet; add cooked spaghetti. Toss to coat and heat through, adding more olive oil if it seems dry or sticks together. Add beaten eggs and cook, tossing constantly with tongs or a large fork, until eggs are barely set. Quickly add 1/2 cup Parmesan cheese and toss again. Season with salt and pepper (remember that bacon and Parmesan are very salty).",
+                "Serve warm with chopped parsley sprinkled on top and extra Parmesan cheese at the table."
             ]
         },
         {
             "title": "Pie Crust Cookies", 
             "description": "Flaky and buttery cookies with a delicious cinnamon sugar crust.",
-            "image": "https://placehold.co/600x400",
+            "image": "https://www.allrecipes.com/thmb/umoSU_GrruIAKYQQ9jrQgi73x40=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/8686775-pie-crust-cookies-ddmfs-3404-4x3-beauty-fab14c4505b44916902d8113695467c3.jpg",
             "servings": 12,
             "cookTime": "50 minutes",
             "ingredients": [
@@ -51,7 +55,7 @@
         {
             "title": "Broccoli Cheese Soup", 
             "description": "This broccoli cheese soup is very flavorful. It's great for serving at luncheons or special gatherings with a quiche. To make it a little fancier, add 1 cup sliced mushrooms and 1 cup white wine with the onions.",
-            "image": "https://placehold.co/600x400",
+            "image": "https://www.allrecipes.com/thmb/XAokV327h6A9zSvhhJeQ6TnVgJU=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/3045broccoli-cheese-soupYolyvideo4x3-8f11feaf34e84c3f9adecbef6bf4fafb.jpg",
             "servings": 12,
             "cookTime": "35 minutes",
             "ingredients": [
