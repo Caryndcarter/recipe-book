@@ -37,6 +37,7 @@ body {
   align-items: center;
 }
 
+
 ​h1,
 h2,
 h3,
@@ -116,9 +117,13 @@ header nav a:hover {
   color: white;
 }
 
+figure {
+    padding: 20px; 
+}
+
 main {
-  margin-top: 70px;
-  width: 80%;
+   margin-top: 70px;
+    width: 80%; 
   margin: 0 auto;
   display: flex;
   justify-content: flex-start;
@@ -129,11 +134,11 @@ main {
 
 footer {
   text-align: center;
-  padding: 10px;
   background-color: var(--header-small);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
+  color: white; 
 }
 
 aside {
@@ -230,6 +235,18 @@ figcaption.blockquote-footer {
     color: white; 
 }
 
+.headerimage {
+    width: 70%;
+    height: auto;
+    max-width: 700px;
+}
+
 /*
   IDs
 */
+
+#logo {
+    width: 10%; /* Takes up 100% of the container width */
+  height: auto; /* Maintains the aspect ratio */
+  max-width: 100px; /* Optional: maximum width */
+}
