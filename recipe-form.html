@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="assets/css/styles.css" rel="stylesheet">
     <script defer src="assets/js/script.js" type="text/javascript"></script>
-    <script defer src="assets/js/form.js" type="text/javascript"></script>
-    <script defer src="assets/js/form copy.js" type="text/javascript"></script>
+    <script defer src="assets/js/recipefinal.js" type="text/javascript"></script>
+    <!--<script defer src="assets/js/form.js" type="text/javascript"></script>-->
+    <script defer src="assets/js/formcopy.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
     
     <title>Document</title>
@@ -45,7 +46,7 @@
         <section>
             <form id="firstForm">
               <h2>Enter a New Recipe</h2>
-              <p id="error">Please complete the form.</p>
+              <h4>Step 1: Recipe Basics</h4>
               <label for="title">Title</label>
               <input id="title" />
               <label for="description">Description</label>
@@ -54,7 +55,16 @@
               <input id="servings" />
               <label for="time">Cook Time</label>
               <input id="time" placeholder="Enter in minutes" />
-              <input type="submit" id="submit" />
+              <input type="submit" id="submitBasics" value="Submit Recipe Basics"/>
+              <p id="errorMsg">Please complete the form.</p>
+              <h4>Step 2: Recipe Ingredients</h4>
+              <label for="ingredients">Ingredients</label>
+              <input id="ingredients" placeholder="Enter one ingredient at a time"/>
+              <input type="submit" id="submitIngredient" value="Submit Ingredient"/>
+              <h4>Step 3: Recipe Steps</h4>
+              <label for="steps">Cooking Steps</label>
+              <input id="steps" placeholder="Enter one step at a time"/>
+              <input type="submit" id="submitStep" value="Submit Cooking Step"/>
             </form>
           </section>
 
