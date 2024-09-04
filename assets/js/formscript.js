@@ -14,6 +14,7 @@ const titleInput = document.querySelector('#title');
 const descriptionInput = document.querySelector('#description');
 const servingsInput = document.querySelector('#servings');
 const timeInput = document.querySelector('#time');
+const imageInput = document.querySelector('#image');
 const ingredientInput = document.querySelector('#ingredient');
 const stepsInput = document.querySelector('#stepitem');
 
@@ -35,6 +36,7 @@ let recipe = {
     description: descriptionInput.value,
     servings: servingsInput.value,
     time: timeInput.value,
+    image: imageInput.value,
     ingredients: ingredientsArray,
     steps: stepsArray
     
@@ -51,7 +53,7 @@ errorMessage.textContent = "";
 function recordRecipe(event) {
     event.preventDefault();    
 
-if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !timeInput.value) {
+if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !timeInput.value || !imageInput.value) {
       
         errorMessage.textContent = "Please complete the form."
      
@@ -62,6 +64,7 @@ if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !tim
             description: descriptionInput.value,
             servings: servingsInput.value,
             time: timeInput.value,
+            image: imageInput.value,
             ingredients: ingredientsArray,
             steps: stepsArray
             
