@@ -41,8 +41,8 @@ let recipe = {
     servings: servingsInput.value,
     time: timeInput.value,
     image: imageInput.value,
-    ingredients: ingredientsArray,
-    steps: stepsArray
+    ingredients: ingredientInput.value,
+    steps: stepsInput.value
     
 } 
 
@@ -81,8 +81,8 @@ function recordRecipe(event) {
             servings: servingsInput.value,
             time: timeInput.value,
             image: imageInput.value,
-            ingredients: ingredientsArray,
-            steps: stepsArray
+            ingredients: "",
+            steps: ""
             
         } 
         
@@ -209,14 +209,12 @@ function renderSteps(event) {
 
 
 function loadLocalStorage () {
-
     let storedRecipes = JSON.parse(localStorage.getItem('recipes')) || []; 
 
-    storedRecipes[0].ingredients.push(ingredientsArray);
-    storedRecipes[0].steps.push(stepsArray);
-    console.log(storedRecipes);
-   // localStorage.setItem('recipes', JSON.stringify(storedRecipes));
+    storedRecipes[0].ingredients = ingredientsArray;
+    storedRecipes[0].steps = stepsArray;
 
+    localStorage.setItem('recipes', JSON.stringify(storedRecipes));
 };
 
 
