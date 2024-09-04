@@ -181,6 +181,10 @@ function renderIngredients(event) {
 
     ingredientInput.value = "";
 
+    stepsInput.style.display = "block";
+    submitStep.style.display = "block";
+    stepLabel.style.display = "block";
+    stepHeader.style.display = "block";
 }
 
 
@@ -198,6 +202,8 @@ function renderSteps(event) {
 
     stepsArray.push(stepItemValue); 
     console.log(stepsArray);
+
+    stepsInput.value = ""; 
 
 };
 
