@@ -135,8 +135,11 @@ async function navigateHome() {
     console.log('navigating home');
         
     // fetch static recipes from json file if there are no recipes already in the allRecipes array
-    if (allRecipes === null || allRecipes.length === 0) {
+    if (allRecipes === null || allRecipes.length < 3) {
         console.log('no recipes to log; getting static data');
+        // if there are less than three recipes (representing at least the static data), clear the allRecipes array and get the static data
+        allRecipes = [];
+        localStorage.setItem('recipeStorage', allRecipes);
         await getStaticData();        
     }
 
