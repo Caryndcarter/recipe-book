@@ -1,0 +1,80 @@
+{
+    "staticRecipes": [
+        {
+            "title": "Spaghetti Carbonara",
+            "description": "This bacon carbonara is a super rich, classic \"bacon and egg\" spaghetti dish that's great to serve for company. This recipe also makes an unusual brunch offering.",
+            "image": "https://www.allrecipes.com/thmb/zJzTLhtUWknHXVoFIzysljJ9wR8=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/11973-spaghetti-carbonara-ii-DDMFS-4x3-6edea51e421e4457ac0c3269f3be5157.jpg",
+            "servings": 8,
+            "cookTime": "40 minutes",
+            "ingredients": [
+                "1 pound spaghetti",
+                "2 tablespoons olive oil, divided, or as needed",
+                "8 slices bacon, diced",
+                "1 onion, chopped",
+                "1 clove garlic, minced",
+                "1/4 cup dry white wine",
+                "4 large eggs, beaten",
+                "1/2 cup grated Parmesan cheese",
+                "salt and black pepper to taste",
+                "2 tablespoons chopped fresh parsley",
+                "2 tablespoons grated Parmesan cheese"
+            ],
+            "steps": [
+                "Bring a large pot of lightly salted water to a boil. Cook spaghetti in boiling water, stirring occasionally, until tender yet firm to the bite, about 12 minutes. Drain, toss spaghetti with 1 tablespoon olive oil, and set aside.",
+                "Place diced bacon in a large skillet over medium heat; cook and stir until evenly browned, about 10 minutes. Drain bacon on paper towels, reserving 2 tablespoons bacon fat in the skillet.",
+                "Add 1 tablespoon olive oil to bacon fat in the skillet. Add chopped onion and cook over medium heat until onion is translucent. Add minced garlic and cook until fragrant, about 1 minute. Add wine and cook 1 minute more.",
+                "Return cooked bacon to the skillet; add cooked spaghetti. Toss to coat and heat through, adding more olive oil if it seems dry or sticks together. Add beaten eggs and cook, tossing constantly with tongs or a large fork, until eggs are barely set. Quickly add 1/2 cup Parmesan cheese and toss again. Season with salt and pepper (remember that bacon and Parmesan are very salty).",
+                "Serve warm with chopped parsley sprinkled on top and extra Parmesan cheese at the table."
+            ]
+        },
+        {
+            "title": "Pie Crust Cookies", 
+            "description": "Flaky and buttery cookies with a delicious cinnamon sugar crust.",
+            "image": "https://www.allrecipes.com/thmb/umoSU_GrruIAKYQQ9jrQgi73x40=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/8686775-pie-crust-cookies-ddmfs-3404-4x3-beauty-fab14c4505b44916902d8113695467c3.jpg",
+            "servings": 12,
+            "cookTime": "50 minutes",
+            "ingredients": [
+                "1 premade pie crust",
+                "all purpose flour for dusting",
+                "1 large egg",
+                "1 teaspoon whole milk",
+                "2 tablespoons granulated sugar",
+                "3/4 teaspoon ground cinnamon",
+                "1/8 teaspoon kosher salt",
+                "1 1/2 tablespoons unsalted butter, melted and cooled"
+            ],
+            "steps": [
+                "Gather all ingredients. Preheat the oven to 375 degrees F (190 degrees C). Line 2 large rimmed baking sheets with parchment paper; set aside.",
+                "Roll premade pie crust to 1/8-inch thickness on a lightly floured work surface, and cut using desired cookie cutter shapes.",
+                "Transfer cut-outs to prepared baking sheets, leaving about a 1/2-inch space between each cookie. Repeat with remaining dough, rerolling scraps once.",
+                "Whisk together egg and milk in a small bowl until combined. Using a pastry brush, brush the tops of each cookie evenly with egg mixture; discard remaining egg mixture. Whisk together sugar, cinnamon, and salt in a small bowl until evenly combined, sprinkle evenly over brushed cookies.",
+                "Bake cookies, one baking sheet at a time, in the preheated oven until the edges and bottoms of cookies just become golden brown, about 15 minutes.",
+                "Remove from oven and brush tops of each cookie lightly with melted butter, let cool slightly on baking sheet, about 5 minutes. Serve warm."
+            ]
+        },
+        {
+            "title": "Broccoli Cheese Soup", 
+            "description": "This broccoli cheese soup is very flavorful. It's great for serving at luncheons or special gatherings with a quiche. To make it a little fancier, add 1 cup sliced mushrooms and 1 cup white wine with the onions.",
+            "image": "https://www.allrecipes.com/thmb/XAokV327h6A9zSvhhJeQ6TnVgJU=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/3045broccoli-cheese-soupYolyvideo4x3-8f11feaf34e84c3f9adecbef6bf4fafb.jpg",
+            "servings": 12,
+            "cookTime": "35 minutes",
+            "ingredients": [
+                "1/2 cup butter",
+                "1 onion, chopped",
+                "1 (16 ounce) package frozen chopped broccoli",
+                "4 (14.5 ounce) cans chicken broth",
+                "1 (1 pound) loaf processed cheese food, cubed",
+                "2 cups milk",
+                "1 tablespoon garlic powder",
+                "2/3 cup cornstarch",
+                "1 cup water"
+            ],
+            "steps": [
+                "Melt butter in a stockpot over medium heat. Add onion and cook, stirring occasionally, until softened. Stir in broccoli. Add broth and simmer until broccoli is tender, 10 to 15 minutes.",
+                "Reduce heat; add cheese cubes and stir until melted. Stir in milk and garlic powder.",
+                "Stir cornstarch and water together in a small bowl until smooth. Stir into soup; cook, stirring frequently, until thick."
+            ]
+        }
+    ]
+    
+}
