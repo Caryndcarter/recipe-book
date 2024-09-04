@@ -5,7 +5,9 @@
 const aside = document.querySelector('aside');
 const recipePicture = document.querySelector('.headerimage')
 const submitButton = document.querySelector('#final');
-const template = document.querySelector('template');
+const template = document.querySelector('#recipe-template');
+const finalTemplate = document.querySelector("#recipe-final");
+const formSection = document.querySelector('#form-section');
 
 // Create form variables that selects the form elements
 
@@ -91,13 +93,7 @@ function recordRecipe(event) {
 function imageReplace () {
 
     if (imageInput.value){
-        aside.innerHTML = "";
-
-        const imageEl = document.createElement('img');  
-        aside.appendChild(imageEl);
-        imageEl.id = "form-image";
-        imageEl.src = imageInput.value; 
-
+        renderImage(); 
         buildRecipeElement();
 
     } else {
@@ -106,11 +102,22 @@ function imageReplace () {
 };
 
 
+function renderImage () {
+    aside.innerHTML = "";
+
+    const imageEl = document.createElement('img');  
+    aside.appendChild(imageEl);
+    imageEl.id = "form-image";
+    imageEl.src = imageInput.value; 
+};
+
 
 
 // Create a function that builds the recipe form elements and appends them to the DOM
 
 function buildRecipeElement () {
+
+    const template = document.getElementById("recipe-template");
   
     const recipeInfo = template.content.cloneNode(true);
 
@@ -188,11 +195,47 @@ function loadLocalStorage () {
 
     localStorage.setItem('recipes', JSON.stringify(storedRecipes));
 
+    buildFinalRecipe(); 
+
 };
 
 
+function buildFinalRecipe () {
 
+    const finalTemplate = document.getElementById("recipe-final");
+    console.log(finalTemplate); 
   
+    const recipeFinal = finalTemplate.content.cloneNode(true);
+
+    recipeFinal.querySelector('#final-title').textContent = titleInput.value; 
+    recipeFinal.querySelector('#final-description').textContent = descriptionInput.value; 
+    recipeFinal.querySelector('#final-servings').textContent = servingsInput.value;
+    recipeFinal.querySelector('#final-time').textContent = timeInput.value; 
+
+    for (let i = 0; i <ingredientsArray.length; i++) {
+        const listItem = document.createElement('li');
+        const ingredientValue = ingredientsArray[i]; 
+        listItem.textContent = ingredientValue; 
+        recipeFinal.querySelector('#final-ingredients ul').appendChild(listItem);
+    }      
+
+    for (let i = 0; i <stepsArray.length; i++) {
+        const stepItem = document.createElement('li');
+        const stepsValue = stepsArray[i]; 
+        stepItem.textContent = stepsValue; 
+        recipeFinal.querySelector('#final-steps ol').appendChild(stepItem);
+    }   
+
+    renderImage(); 
+
+    formSection.innerHTML = "";
+    formSection.appendChild(recipeFinal);
+
+
+};
+  
+
+
   //  Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing recipe data in local storage.
   
 //function storeLocalStorage(recipe) {
@@ -219,7 +262,7 @@ function loadLocalStorage () {
 
 
 
-
+/*
 
 
 function readLocalStorage() {
@@ -247,6 +290,8 @@ function submitButtonEvent (event) {
         submit.addEventListener('click', redirectPage("recipe-final.html"));
         
     };
+
+*/
 
 
 // Add an event listener to the form on submit. Call the function to handle the form submission.
