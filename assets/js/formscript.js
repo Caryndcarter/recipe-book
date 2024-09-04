@@ -17,6 +17,10 @@ const timeInput = document.querySelector('#time');
 const imageInput = document.querySelector('#image');
 const ingredientInput = document.querySelector('#ingredient');
 const stepsInput = document.querySelector('#stepitem');
+const ingredientHeader = document.querySelector('#ingredient-header');
+const stepHeader = document.querySelector('#step-header');
+const ingredientLabel = document.querySelector('#ingredient-label');
+const stepLabel = document.querySelector('#step-label');
 
 //Create submit button variables for each section of the recipes
 
@@ -50,10 +54,22 @@ errorMessage.textContent = "";
 
 //FUNCTIONS 
 
-function recordRecipe(event) {
-    event.preventDefault();    
+window.onload = function() {
+    ingredientInput.style.display = "none";
+    stepsInput.style.display = "none";
+    submitIngredient.style.display = "none";
+    submitStep.style.display = "none";
+    ingredientHeader.style.display = "none";
+    stepHeader.style.display = "none";
+    ingredientLabel.style.display = "none";
+    stepLabel.style.display = "none";
+};
 
-if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !timeInput.value || !imageInput.value) {
+
+function recordRecipe(event) {
+    event.preventDefault();
+
+    if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !timeInput.value || !imageInput.value) {
       
         errorMessage.textContent = "Please complete the form."
      
@@ -68,10 +84,17 @@ if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !tim
             ingredients: ingredientsArray,
             steps: stepsArray
             
-        }   
+        } 
+        
+    ingredientInput.style.display = "block";
+    submitIngredient.style.display = "block";
+    ingredientHeader.style.display = "block";
+    ingredientLabel.style.display = "block";  
 
     storeLocalStorage(recipe);
     renderRecipeList(recipe);
+
+  
         
     }
  
@@ -155,6 +178,8 @@ function renderIngredients(event) {
 
     ingredientsArray.push(ingredientValue); 
     console.log(ingredientsArray);
+
+    ingredientInput.value = "";
 
 }
 
