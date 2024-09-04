@@ -161,12 +161,6 @@ function buildRecipeElement (recipeList) {
     recipeInfo.querySelector('#final').style.display = 'none';
   
     aside.appendChild(recipeInfo);
-
-
-    const submitButton = document.querySelector('#final');
-    submitButton.addEventListener('click', function (){
-        console.log("ive been clicked");
-    });
 };
 
 
@@ -208,6 +202,11 @@ function renderSteps(event) {
     console.log(stepsArray);
 
     stepsInput.value = ""; 
+
+    const submitButton = document.querySelector('#final');
+    submitButton.addEventListener('click', function (){
+        console.log("ive been clicked");
+    });
 };
 
 
