@@ -148,6 +148,7 @@ function buildRecipeElement () {
 //Add ingredients to the ingredients array.  
 
 function renderIngredients(event) {
+
     event.preventDefault(); 
 
     aside.querySelector('#ingredients').style.display = 'block'; 
@@ -229,10 +230,10 @@ function buildFinalRecipe () {
     recipeFinal.querySelector('#final-time').textContent = timeInput.value; 
 
     for (let i = 0; i <ingredientsArray.length; i++) {
-        const listItem = document.createElement('li');
-        const ingredientValue = ingredientsArray[i]; 
-        listItem.textContent = ingredientValue; 
-        recipeFinal.querySelector('#final-ingredients ul').appendChild(listItem);
+        const ingItem = document.createElement('li');
+        const ingValue = ingredientsArray[i]; 
+        ingItem.textContent = ingValue; 
+        recipeFinal.querySelector('#final-ingredients ul').appendChild(ingItem);
     }      
 
     for (let i = 0; i <stepsArray.length; i++) {
@@ -250,7 +251,6 @@ function buildFinalRecipe () {
 
 };
   
-
 
 // EVENT LISTENERS FOR THE 3 FORM BUTTONS (basics, ingredients, and steps)
 
