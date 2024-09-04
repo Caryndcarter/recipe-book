@@ -87,7 +87,40 @@ function storeLocalStorage(recipe) {
         storedRecipes.push(recipe);
         localStorage.setItem('recipes', JSON.stringify(storedRecipes));
 };
+
+
   
+function renderRecipeList() {
+     
+    const recipeList = JSON.parse(localStorage.getItem('recipes'));
+    
+    if (recipeList !== null) {
+
+        for (let i = 0; i <recipeList.length; i++) {
+            imageReplace(recipeList[i]);
+        }      
+    }
+}; 
+
+
+
+function imageReplace (recipeList) {
+
+    if (recipeList.image){
+        aside.innerHTML = "";
+
+        const imageEl = document.createElement('img');  
+        aside.appendChild(imageEl);
+        imageEl.id = "form-image";
+        imageEl.src = recipeList.image; 
+
+        buildRecipeElement(recipeList);
+
+    } else {
+        buildRecipeElement(recipeList);
+    }
+};
+
 
 
 
@@ -108,20 +141,6 @@ function buildRecipeElement (recipeList) {
   
     aside.appendChild(recipeInfo);
 };
-
-
-function renderRecipeList() {
-     
-    const recipeList = JSON.parse(localStorage.getItem('recipes'));
-    
-    if (recipeList !== null) {
-
-        for (let i = 0; i <recipeList.length; i++) {
-            buildRecipeElement(recipeList[i]);
-        }      
-    }
-}; 
-
 
 
 function renderIngredients(event) {

@@ -300,3 +300,9 @@ figcaption.blockquote-footer {
     color: red;
     opacity: .75;
   }
+
+#form-image {
+    width: 500px;
+    height: auto; 
+    max-width: 500px;
+}
