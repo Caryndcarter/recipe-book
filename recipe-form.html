@@ -49,7 +49,7 @@
         </aside>
       </section>
 
-      <section>
+      <section id="form-section">
         <form id="firstForm">
           <h2>Enter a New Recipe</h2>
           <h4>Step 1: Recipe Basics</h4>
@@ -61,10 +61,12 @@
           <input id="servings" />
           <label for="time">Cook Time</label>
           <input id="time" placeholder="Enter in minutes" />
+          <label for="image">Image URL</label>
+          <input id="image" placeholder="Enter URL" />
           <input type="submit" id="submitBasics" value="Submit Recipe Basics" />
           <p id="errorMsg">Please complete the form.</p>
-          <h4>Step 2: Recipe Ingredients</h4>
-          <label for="ingredients">Ingredients</label>
+          <h4 id="ingredient-header">Step 2: Recipe Ingredients</h4>
+          <label id="ingredient-label" for="ingredient">Ingredients</label>
           <input
             id="ingredient"
             placeholder="Enter one ingredient at a time"
@@ -74,10 +76,12 @@
             id="submitIngredient"
             value="Submit Ingredient"
           />
-          <h4>Step 3: Recipe Steps</h4>
-          <label for="stepitem">Cooking Steps</label>
+          <p id="errorMsg2">Please add an ingredient.</p>
+          <h4 id="step-header">Step 3: Recipe Steps</h4>
+          <label id="step-label" for="stepitem">Cooking Steps</label>
           <input id="stepitem" placeholder="Enter one step at a time" />
           <input type="submit" id="submitStep" value="Submit Cooking Step" />
+          <p id="errorMsg3">Please add a step.</p>
         </form>
       </section>
     </main>
@@ -108,6 +112,40 @@
         </article>
         <input type="submit" value="View Final Recipe" id="final" />
     </template>
+
+
+    <template id="recipe-final">
+      <section>
+          <div class="container-fluid">
+              <div class="row box-container">
+                  <div class="col-md-12 px-4">
+                      <div class="box bg-light p-3">
+                          <h2 id="final-title"></h2>
+                          <p id="final-description"></p>
+                          <dl class="row">
+                              <dt class="col-sm-3">Servings</dt>
+                              <dd class="col-sm-9" id="final-servings"></dd>
+                              
+                              <dt class="col-sm-3">Time to Cook</dt>
+                              <dd class="col-sm-9" id="final-time"></dd>
+                              
+                              <dt class="col-sm-3">Ingredients</dt>
+                              <dd class="col-sm-9" id="final-ingredients">
+                                  <ul></ul>
+                              </dd>
+                            
+                              <dt class="col-sm-3">Cooking Steps</dt>
+                              <dd class="col-sm-9" id="final-steps">
+                                  <ol></ol>
+                              </dd>
+                            </dl>
+                      </div>  
+                  </div>
+              </div>
+          </div>
+      </section>
+  </template>
+  
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
