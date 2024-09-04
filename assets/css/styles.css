@@ -1,0 +1,302 @@
+.box {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.box-container {
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+ol, ul {
+    padding-left: 1rem;
+}
+
+/*
+  Resets
+*/
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  line-height: 1;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: white; 
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+
+​h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+
+/*
+  General Styles
+*/
+/*
+  Universal
+*/
+:root {
+  --body-bg: #FADE9B;
+  --main-bg: #fff;
+  --header-bg: #9BB8FA;
+  --link-hover: #fff;
+  --main-alt:#6A9C89;
+  --header-alt: #76b5c5; 
+  --form-bg:#EEEEEE;
+  --header-alt: #C1D8C3; 
+  --body-alt: #CD5C08;
+  --header-small: #201E43;
+
+}
+
+/*
+  Tags
+*/
+
+
+
+header {
+  width: 100%;
+  background-color: var(--header-alt);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+header h1 {
+  margin: 0;
+  padding: 10px 20px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+header nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+header nav a {
+  text-decoration: none;
+  padding: 5px 10px;
+  margin-right: 10px;
+  background-image: linear-gradient(270deg, var(--link-hover) 0%, var(--link-hover) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: bottom;
+  transition: all 0.25s ease-in;
+  font-size: 1.4rem;
+}
+
+header nav a:last-child {
+  margin-right: 0;
+}
+
+header nav a:hover {
+  cursor: pointer;
+  background-size: 100% 100%;
+  color: white;
+}
+
+figure {
+    padding: 20px; 
+}
+
+main {
+margin-top: 70px;
+width: 100%; 
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  flex-grow: 1;
+  padding: 20px;
+  background-color: var(--main-alt);
+  margin-bottom: 70px;
+}
+
+footer {
+  text-align: center;
+  background-color: var(--header-small);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: white; 
+}
+
+footer button {
+    padding: 10px 20px;
+    background-color: #f39c12; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+footer button:hover {
+    background-color: #e67e22; 
+}
+
+
+aside {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+aside, 
+section {
+  flex: 1 1 100%;
+}
+
+img {
+    border: 2px solid black; 
+    border-radius: 10px; 
+}
+
+article {
+    width: 100%;
+    position: relative;
+    background-color: var(--form-bg);
+    padding: 20px; 
+    border: 2px solid black; 
+    border-radius: 10px; 
+    margin-bottom: 20px;
+  }
+
+  
+  article blockquote {
+    margin: 1rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  
+  article h2 {
+    text-transform: capitalize;
+    border-bottom: thin solid;
+  }
+  
+  article p {
+    left: 1rem;
+    bottom: 0.5rem;
+    opacity: .75;
+  }
+
+form {
+    display: flex;
+    flex-flow: column wrap;
+    position: relative;
+    background-color: var(--form-bg);
+    padding: 20px; 
+    border: 2px solid black; 
+    border-radius: 10px; 
+  }
+  
+  form > *:not(label) {
+    margin: 1rem 0;
+    padding: 0.5rem;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  input[type=submit] {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: var(--header-small);
+    color: white;
+  }
+  
+  input[type=submit]:active {
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .5);
+    background-color: var(--body-alt);
+  }
+  
+  input[type=submit]:hover {
+    border-style: inset;
+    background-color: var(--body-alt);
+  }
+  
+  input,
+  textarea {
+    border-radius: 4px;
+    border-width: 1px;
+    font-size: 1rem;
+    background-color: var();
+  }
+  
+  section {
+    padding: 2rem;
+    display: flex;
+    align-items: stretch;
+    flex-flow: column wrap;
+    justify-content: center;
+   
+  }
+  
+  
+  
+  
+  
+
+/*
+  Classes
+*/
+.headertop {
+   background-color: var(--header-small);
+   justify-content: center; 
+}
+
+.blockquote {
+    color: white; 
+}
+
+figcaption.blockquote-footer {
+    color: white; 
+}
+
+.headerimage {
+    width: 80%;
+    height: auto;
+    max-width: 700px;
+}
+
+/*
+  IDs
+*/
+
+#logo {
+    width: 10%; 
+  height: auto;
+  max-width: 100px; 
+}
+
+#errorMsg {
+    color: red;
+    opacity: .75;
+  }

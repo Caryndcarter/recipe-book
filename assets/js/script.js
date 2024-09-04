@@ -13,6 +13,7 @@ function recipeClicked(recipeId) {
     console.log(`recipe ${recipeId} clicked`);
 }
 
+
 function addNewRecipe(recipeTitle, recipeDescription, recipeImage, recipeServings, recipeCookTime, recipeIngredients, recipeSteps) {
     let newRecipe = {
         title: recipeTitle,
