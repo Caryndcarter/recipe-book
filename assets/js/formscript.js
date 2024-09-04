@@ -204,10 +204,21 @@ function renderSteps(event) {
     stepsInput.value = ""; 
 
     const submitButton = document.querySelector('#final');
-    submitButton.addEventListener('click', function (){
-        console.log("ive been clicked");
-    });
+    submitButton.addEventListener('click', loadLocalStorage);  
 };
+
+
+function loadLocalStorage () {
+
+    let storedRecipes = JSON.parse(localStorage.getItem('recipes')) || []; 
+
+    storedRecipes[0].ingredients.push(ingredientsArray);
+    storedRecipes[0].steps.push(stepsArray);
+    console.log(storedRecipes);
+   // localStorage.setItem('recipes', JSON.stringify(storedRecipes));
+
+};
+
 
 
 function readLocalStorage() {
