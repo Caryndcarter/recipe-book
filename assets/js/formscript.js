@@ -93,8 +93,6 @@ function recordRecipe(event) {
 
     storeLocalStorage(recipe);
     renderRecipeList(recipe);
-
-  
         
     }
  
@@ -163,6 +161,12 @@ function buildRecipeElement (recipeList) {
     recipeInfo.querySelector('#final').style.display = 'none';
   
     aside.appendChild(recipeInfo);
+
+
+    const submitButton = document.querySelector('#final');
+    submitButton.addEventListener('click', function (){
+        console.log("ive been clicked");
+    });
 };
 
 
@@ -204,7 +208,6 @@ function renderSteps(event) {
     console.log(stepsArray);
 
     stepsInput.value = ""; 
-
 };
 
 
@@ -246,7 +249,7 @@ submitStep.addEventListener('click', renderSteps);
 
 
 //CLEAR LOCAL STORAGE IF/WHEN NECESSARY
-clearStorage(); 
+//clearStorage(); 
 
 function clearStorage () {
     localStorage.clear();
