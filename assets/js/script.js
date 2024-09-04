@@ -2,8 +2,10 @@ const homeButton = document.querySelector("#home-button");
 const addRecipeButton = document.querySelector("#add-recipe-button");
 const mainEl = document.querySelector('#container')
 
+const btnSurprise = document.querySelector('#btnSurprise')
+
 let allRecipes = [];
-const storedRecipes = JSON.parse(localStorage.getItem("recipeStorage"));
+const storedRecipes = JSON.parse(localStorage.getItem("recipeStorage")) || [];
 console.log(storedRecipes);
 if (storedRecipes !== null) {
     allRecipes = storedRecipes;
@@ -13,7 +15,23 @@ function recipeClicked(recipeId) {
     console.log(`recipe ${recipeId} clicked`);
 }
 
+function showModal() {
+    $('#staticBackdrop').modal({
+        keyboard: false
+    })
+    $('#staticBackdrop').modal('show')
+}
 
+function modalCancel() {
+    console.log('cancelling...');
+    $('#staticBackdrop').modal('hide')
+}
+
+function modalConfirm() {
+    console.log('confirming...');
+    // add ingredient to recipe
+    $('#staticBackdrop').modal('hide')
+}
 
 function addNewRecipe(recipeTitle, recipeDescription, recipeImage, recipeServings, recipeCookTime, recipeIngredients, recipeSteps) {
     let newRecipe = {
@@ -133,13 +151,18 @@ function createRecipeCards() {
 
 async function navigateHome() {
     console.log('navigating home');
-        
+
+    if (window.location.pathname !== '/index.html') {
+        window.location.pathname = '/index.html';
+    }
+    
+    
     // fetch static recipes from json file if there are no recipes already in the allRecipes array
     if (allRecipes === null || allRecipes.length < 3) {
         console.log('no recipes to log; getting static data');
         // if there are less than three recipes (representing at least the static data), clear the allRecipes array and get the static data
         allRecipes = [];
-        localStorage.setItem('recipeStorage', allRecipes);
+        localStorage.setItem('recipeStorage', JSON.stringify(allRecipes));
         await getStaticData();        
     }
 
@@ -148,7 +171,11 @@ async function navigateHome() {
 
 function navigateAddRecipe() {
     console.log('adding new recipe');
-
+    
+    if (window.location.pathname !== '/recipe-form.html') {
+        window.location.pathname = '/recipe-form.html';
+    }
+    
     // add sample recipe
     // addNewRecipe(
     //     "Sample Recipe", 
@@ -176,4 +203,10 @@ function navigateAddRecipe() {
 homeButton.addEventListener("click", navigateHome);
 addRecipeButton.addEventListener("click", navigateAddRecipe);
 
-navigateHome();
+btnSurprise.addEventListener("click", showModal);
+
+window.onload = (event) => {
+    if (window.location.pathname === '/index.html') {
+        navigateHome();
+    }    
+};
