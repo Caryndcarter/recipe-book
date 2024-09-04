@@ -22,6 +22,7 @@ const stepHeader = document.querySelector('#step-header');
 const ingredientLabel = document.querySelector('#ingredient-label');
 const stepLabel = document.querySelector('#step-label');
 
+
 //Create submit button variables for each section of the recipes
 
 const submitBasics = document.querySelector('#submitBasics');
@@ -74,71 +75,33 @@ function recordRecipe(event) {
         errorMessage.textContent = "Please complete the form."
      
     } else {
-       
-        recipe = {
-            title: titleInput.value, 
-            description: descriptionInput.value,
-            servings: servingsInput.value,
-            time: timeInput.value,
-            image: imageInput.value,
-            ingredients: "",
-            steps: ""
-            
-        } 
         
     ingredientInput.style.display = "block";
     submitIngredient.style.display = "block";
     ingredientHeader.style.display = "block";
     ingredientLabel.style.display = "block";  
 
-    storeLocalStorage(recipe);
-    renderRecipeList(recipe);
+    imageReplace();
         
     }
  
 }
 
-  
-  //  Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing recipe data in local storage.
-  
-function storeLocalStorage(recipe) {
-  
-    let storedRecipes = readLocalStorage();      
-  
-        storedRecipes.push(recipe);
-        localStorage.setItem('recipes', JSON.stringify(storedRecipes));
-};
 
+function imageReplace () {
 
-  
-function renderRecipeList() {
-     
-    const recipeList = JSON.parse(localStorage.getItem('recipes'));
-    
-    if (recipeList !== null) {
-
-        for (let i = 0; i <recipeList.length; i++) {
-            imageReplace(recipeList[i]);
-        }      
-    }
-}; 
-
-
-
-function imageReplace (recipeList) {
-
-    if (recipeList.image){
+    if (imageInput.value){
         aside.innerHTML = "";
 
         const imageEl = document.createElement('img');  
         aside.appendChild(imageEl);
         imageEl.id = "form-image";
-        imageEl.src = recipeList.image; 
+        imageEl.src = imageInput.value; 
 
-        buildRecipeElement(recipeList);
+        buildRecipeElement();
 
     } else {
-        buildRecipeElement(recipeList);
+        buildRecipeElement();
     }
 };
 
@@ -147,14 +110,14 @@ function imageReplace (recipeList) {
 
 // Create a function that builds the recipe form elements and appends them to the DOM
 
-function buildRecipeElement (recipeList) {
+function buildRecipeElement () {
   
     const recipeInfo = template.content.cloneNode(true);
 
-    recipeInfo.querySelector('h2').textContent = recipeList.title;
-    recipeInfo.querySelector('blockquote').textContent = recipeList.description;
-    recipeInfo.querySelector('#servings').textContent = recipeList.servings;
-    recipeInfo.querySelector('#time').textContent = recipeList.time;
+    recipeInfo.querySelector('h2').textContent = titleInput.value;
+    recipeInfo.querySelector('blockquote').textContent = descriptionInput.value;
+    recipeInfo.querySelector('#servings').textContent = servingsInput.value;
+    recipeInfo.querySelector('#time').textContent = timeInput.value;
 
     recipeInfo.querySelector('#ingredients').style.display = 'none'; 
     recipeInfo.querySelector('#steps').style.display = 'none'; 
@@ -210,12 +173,52 @@ function renderSteps(event) {
 
 function loadLocalStorage () {
     let storedRecipes = JSON.parse(localStorage.getItem('recipes')) || []; 
+  
+    recipe = {
+        title: titleInput.value, 
+        description: descriptionInput.value,
+        servings: servingsInput.value,
+        time: timeInput.value,
+        image: imageInput.value,
+        ingredients: ingredientsArray,
+        steps: stepsArray
+    }
 
-    storedRecipes[0].ingredients = ingredientsArray;
-    storedRecipes[0].steps = stepsArray;
+    storedRecipes.push(recipe);
 
     localStorage.setItem('recipes', JSON.stringify(storedRecipes));
+
 };
+
+
+
+  
+  //  Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing recipe data in local storage.
+  
+//function storeLocalStorage(recipe) {
+  
+    //let storedRecipes = readLocalStorage();      
+  
+        ///storedRecipes.push(recipe);
+        //localStorage.setItem('recipes', JSON.stringify(storedRecipes));
+//};
+
+
+  
+/*function renderRecipeList() {
+     
+    const recipeList = JSON.parse(localStorage.getItem('recipes'));
+    
+    if (recipeList !== null) {
+
+        for (let i = 0; i <recipeList.length; i++) {
+            imageReplace(recipeList[i]);
+        }      
+    }
+}; */
+
+
+
 
 
 
