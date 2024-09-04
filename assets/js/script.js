@@ -14,6 +14,7 @@ function recipeClicked(recipeId) {
 }
 
 
+
 function addNewRecipe(recipeTitle, recipeDescription, recipeImage, recipeServings, recipeCookTime, recipeIngredients, recipeSteps) {
     let newRecipe = {
         title: recipeTitle,
