@@ -1,6 +1,6 @@
 //VARIABLES
 
-//Create variable for the aside elements
+//Create variable for the aside and section elements
 
 const aside = document.querySelector('aside');
 const recipePicture = document.querySelector('.headerimage')
@@ -25,7 +25,7 @@ const ingredientLabel = document.querySelector('#ingredient-label');
 const stepLabel = document.querySelector('#step-label');
 
 
-//Create submit button variables for each section of the recipes
+//Create submit button variables for the buttons on the form 
 
 const submitBasics = document.querySelector('#submitBasics');
 const submitIngredient = document.querySelector('#submitIngredient');
@@ -51,11 +51,17 @@ let recipe = {
 
 //Handle the error if there is not enough info submitted in the form
 
-let errorMessage = document.querySelector('#errorMsg')
+const errorMessage = document.querySelector('#errorMsg');
 errorMessage.textContent = ""; 
+const errorMessage2 = document.querySelector("#errorMsg2");
+errorMessage2.textContent = "";
+const errorMessage3 = document.querySelector("#errorMsg3");
+errorMessage3.textContent = "";
 
 
 //FUNCTIONS 
+
+//On Load only show the first Step 1 form fields and not steps 2 or 3
 
 window.onload = function() {
     ingredientInput.style.display = "none";
@@ -69,12 +75,15 @@ window.onload = function() {
 };
 
 
+//When the first Step 1 button is clicked, check to make sure the fields are filled out and if they are not, ask them to complete all the basic element input fields. 
+//If the fields are all filled out, call the ImageReplace function and show the ingredients portion of the form. 
+
 function recordRecipe(event) {
     event.preventDefault();
 
-    if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !timeInput.value || !imageInput.value) {
+    if (!titleInput.value || !descriptionInput.value || !servingsInput.value || !timeInput.value) {
       
-        errorMessage.textContent = "Please complete the form."
+        errorMessage.textContent = "Please fill out all the recipe basic elements."
      
     } else {
         
@@ -87,8 +96,9 @@ function recordRecipe(event) {
         
     }
  
-}
+};
 
+//Show the image the user has provided instead of the stock image. And call the buildRecipeElement function.  Leave the stock image if no image is provided.  
 
 function imageReplace () {
 
@@ -113,7 +123,7 @@ function renderImage () {
 
 
 
-// Create a function that builds the recipe form elements and appends them to the DOM
+// Build the Basic Recipe from the elements the user has provided.  
 
 function buildRecipeElement () {
 
@@ -134,6 +144,9 @@ function buildRecipeElement () {
 };
 
 
+//When the user clicks on adding an ingredient, render the list of ingredients on the side of the page and reveal the Step 3 Cooking Steps input part of the form. 
+//Add ingredients to the ingredients array.  
+
 function renderIngredients(event) {
     event.preventDefault(); 
 
@@ -145,8 +158,6 @@ function renderIngredients(event) {
     aside.querySelector('#ingredients ul').appendChild(listItem);
 
     ingredientsArray.push(ingredientValue); 
-    console.log(ingredientsArray);
-
     ingredientInput.value = "";
 
     stepsInput.style.display = "block";
@@ -156,6 +167,7 @@ function renderIngredients(event) {
 }
 
 
+//When the user clicks on adding a cooking step, render the list of steps on the side of the page.  Add the steps to the Steps Array.  Activate the "final recipe" button.  
 
 function renderSteps(event) {
     event.preventDefault(); 
@@ -168,8 +180,7 @@ function renderSteps(event) {
     stepItem.textContent = stepItemValue; 
     aside.querySelector('#steps ol').appendChild(stepItem); 
 
-    stepsArray.push(stepItemValue); 
-    console.log(stepsArray);
+    stepsArray.push(stepItemValue);
 
     stepsInput.value = ""; 
 
@@ -178,7 +189,11 @@ function renderSteps(event) {
 };
 
 
+//When the view final recipe button is clicked, create the recipe object from the input values and the arrays.  Push the recipe object to local storage.  
+//Call the buildFinalFunction. 
+
 function loadLocalStorage () {
+
     let storedRecipes = JSON.parse(localStorage.getItem('recipes')) || []; 
   
     recipe = {
@@ -200,10 +215,11 @@ function loadLocalStorage () {
 };
 
 
+//When the view final recipe button is clicked, use the final recipe template and render the final recipe.  Clear the right section of the screen and append the final recipe.  
+
 function buildFinalRecipe () {
 
     const finalTemplate = document.getElementById("recipe-final");
-    console.log(finalTemplate); 
   
     const recipeFinal = finalTemplate.content.cloneNode(true);
 
@@ -234,6 +250,38 @@ function buildFinalRecipe () {
 
 };
   
+
+
+// EVENT LISTENERS FOR THE 3 FORM BUTTONS (basics, ingredients, and steps)
+
+submitBasics.addEventListener('click', recordRecipe); 
+
+submitIngredient.addEventListener('click', renderIngredients);
+
+submitStep.addEventListener('click', renderSteps);
+
+
+
+//CLEAR LOCAL STORAGE IF/WHEN NECESSARY
+//clearStorage(); 
+
+function clearStorage () {
+    localStorage.clear();
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   //  Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing recipe data in local storage.
@@ -293,23 +341,6 @@ function submitButtonEvent (event) {
 
 */
 
-
-// Add an event listener to the form on submit. Call the function to handle the form submission.
-
-submitBasics.addEventListener('click', recordRecipe); 
-
-submitIngredient.addEventListener('click', renderIngredients);
-
-submitStep.addEventListener('click', renderSteps);
-
-
-
-//CLEAR LOCAL STORAGE IF/WHEN NECESSARY
-//clearStorage(); 
-
-function clearStorage () {
-    localStorage.clear();
-} 
   
 
 
