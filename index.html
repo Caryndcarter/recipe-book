@@ -46,15 +46,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add this ingredient?</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 ...
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="modalCancel()">Close</button>
-                <button type="button" class="btn btn-primary" onclick="modalConfirm()">Understood</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="modalCancel()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="modalConfirm()">Confirm</button>
             </div>
             </div>
         </div>
@@ -67,6 +67,7 @@
                     <div class="col-md-12 px-4">
                         <div class="box bg-light p-3">
                             <h2 id="final-title"></h2>
+                            <p id="recipeId" style="display:none"></p>
                             <p id="final-description"></p>
                             <dl class="row">
                                 <dt class="col-sm-5">Servings</dt>

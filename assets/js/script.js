@@ -5,6 +5,9 @@ const mainEl = document.querySelector('#container');
 const btnSurprise = document.querySelector('#btnSurprise');
 
 let allRecipes = [];
+let allRandomIngredients = [];
+let newRandomIngredient = '';
+
 const storedRecipes = JSON.parse(localStorage.getItem("recipeStorage")) || [];
 console.log(storedRecipes);
 if (storedRecipes !== null) {
@@ -22,6 +25,7 @@ function recipeClicked(recipeId) {
     const recipeFinal = finalTemplate.content.cloneNode(true);
 
     recipeFinal.querySelector('#final-title').textContent = allRecipes[recipeId].title; 
+    recipeFinal.querySelector('#recipeId').textContent = recipeId;
     recipeFinal.querySelector('#final-description').textContent = allRecipes[recipeId].description; 
     recipeFinal.querySelector('#final-servings').textContent = allRecipes[recipeId].servings;
     recipeFinal.querySelector('#final-time').textContent = allRecipes[recipeId].cookTime; 
@@ -52,6 +56,12 @@ function showModal() {
     $('#staticBackdrop').modal({
         keyboard: false
     })
+
+    // get random ingredient from list of all random ingredients
+    const randomIndex = Math.floor(Math.random() * allRandomIngredients.length);
+    newRandomIngredient = allRandomIngredients[randomIndex];
+    document.querySelector('.modal-body').innerHTML = newRandomIngredient;
+
     // show modal
     $('#staticBackdrop').modal('show')
 }
@@ -65,8 +75,18 @@ function modalCancel() {
 function modalConfirm() {
     console.log('confirming...');
 
-    // add random ingredient to recipe
-  
+    // get id of the recipe that is being viewed
+    let recipeId = document.querySelector('#recipeId').textContent;
+
+    // add the random ingredient to the recipe
+    allRecipes[recipeId].ingredients.push(newRandomIngredient);
+
+    // update localStorage with the updated recipe
+    localStorage.setItem("recipeStorage", JSON.stringify(allRecipes));
+
+    // reload recipe page to show added ingredient
+    recipeClicked(recipeId);
+
     // hide modal
     $('#staticBackdrop').modal('hide')
 }
@@ -109,6 +129,26 @@ async function getStaticData() {
         .catch((error) => 
                 console.error("Unable to fetch data:", error))
     
+}
+
+async function getRandomIngredients() {
+    const url = "./assets/static/random-ingredients.json";
+    fetch(url)
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data.randomIngredients)
+            for (let i = 0; i < data.randomIngredients.length; i++) {
+                const element = data.randomIngredients[i];
+                allRandomIngredients.push(element);                
+            }
+        })                
+        .catch((error) => 
+                console.error("Unable to fetch random ingredients data:", error))
 }
 
 function createRecipeCards() {
@@ -190,8 +230,8 @@ function createRecipeCards() {
 async function navigateHome() {
     console.log('navigating home');
 
-    if (window.location.pathname !== '/index.html') {
-        window.location.pathname = '/index.html';
+    if (window.location.pathname !== '/recipe-book/index.html') {
+        window.location.pathname = '/recipe-book/index.html';
     }
     
     // hide surprise ingredient button
@@ -217,8 +257,8 @@ function navigateAddRecipe() {
 
     
     
-    if (window.location.pathname !== '/recipe-form.html') {
-        window.location.pathname = '/recipe-form.html';
+    if (window.location.pathname !== '/recipe-book/recipe-form.html') {
+        window.location.pathname = '/recipe-book/recipe-form.html';
     }
 
     // hide surprise ingredient button
@@ -254,7 +294,8 @@ homeButton.addEventListener("click", navigateHome);
 addRecipeButton.addEventListener("click", navigateAddRecipe);
 
 window.onload = (event) => {
-    if (window.location.pathname === '/index.html') {
+    if (window.location.pathname === '/recipe-book/index.html') {
         navigateHome();
+        getRandomIngredients();
     }    
 };
