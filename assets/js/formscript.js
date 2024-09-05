@@ -42,7 +42,7 @@ let recipe = {
     title: titleInput.value, 
     description: descriptionInput.value,
     servings: servingsInput.value,
-    time: timeInput.value,
+    cookTime: timeInput.value,
     image: imageInput.value,
     ingredients: ingredientInput.value,
     steps: stepsInput.value
@@ -195,13 +195,13 @@ function renderSteps(event) {
 
 function loadLocalStorage () {
 
-    let storedRecipes = JSON.parse(localStorage.getItem('recipes')) || []; 
+    let storedRecipes = JSON.parse(localStorage.getItem('recipeStorage')) || []; 
   
     recipe = {
         title: titleInput.value, 
         description: descriptionInput.value,
         servings: servingsInput.value,
-        time: timeInput.value,
+        cookTime: timeInput.value,
         image: imageInput.value,
         ingredients: ingredientsArray,
         steps: stepsArray
@@ -209,7 +209,7 @@ function loadLocalStorage () {
 
     storedRecipes.push(recipe);
 
-    localStorage.setItem('recipes', JSON.stringify(storedRecipes));
+    localStorage.setItem('recipeStorage', JSON.stringify(storedRecipes));
 
     buildFinalRecipe(); 
 

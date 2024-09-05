@@ -30,8 +30,7 @@ function modalCancel() {
 function modalConfirm() {
     console.log('confirming...');
     // add ingredient to recipe
-
-    // hide modal
+  
     $('#staticBackdrop').modal('hide')
 }
 
