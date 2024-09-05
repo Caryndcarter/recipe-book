@@ -1,8 +1,8 @@
 const homeButton = document.querySelector("#home-button");
 const addRecipeButton = document.querySelector("#add-recipe-button");
-const mainEl = document.querySelector('#container')
+const mainEl = document.querySelector('#container');
 
-const btnSurprise = document.querySelector('#btnSurprise')
+const btnSurprise = document.querySelector('#btnSurprise');
 
 let allRecipes = [];
 const storedRecipes = JSON.parse(localStorage.getItem("recipeStorage")) || [];
@@ -13,24 +13,61 @@ if (storedRecipes !== null) {
 
 function recipeClicked(recipeId) {
     console.log(`recipe ${recipeId} clicked`);
-}
+
+    mainEl.innerHTML = ""; 
+    btnSurprise.style.display = 'inline';
+
+    const finalTemplate = document.getElementById("recipe-final");
+  
+    const recipeFinal = finalTemplate.content.cloneNode(true);
+
+    recipeFinal.querySelector('#final-title').textContent = allRecipes[recipeId].title; 
+    recipeFinal.querySelector('#final-description').textContent = allRecipes[recipeId].description; 
+    recipeFinal.querySelector('#final-servings').textContent = allRecipes[recipeId].servings;
+    recipeFinal.querySelector('#final-time').textContent = allRecipes[recipeId].cookTime; 
+
+    for (let i = 0; i <allRecipes[recipeId].ingredients.length; i++) {
+        const ingItem = document.createElement('li');
+        const ingValue = allRecipes[recipeId].ingredients[i]; 
+        ingItem.textContent = ingValue; 
+        recipeFinal.querySelector('#final-ingredients ul').appendChild(ingItem);
+    }      
+
+    for (let i = 0; i <allRecipes[recipeId].steps.length; i++) {
+        const stepItem = document.createElement('li');
+        const stepsValue = allRecipes[recipeId].steps[i]; 
+        stepItem.textContent = stepsValue; 
+        recipeFinal.querySelector('#final-steps ol').appendChild(stepItem);
+    }   
+
+     // show surprise ingredient button
+    btnSurprise.style.display = 'inline';
+    //renderImage(); 
+
+    mainEl.appendChild(recipeFinal);
+
+};
 
 function showModal() {
     $('#staticBackdrop').modal({
         keyboard: false
     })
+    // show modal
     $('#staticBackdrop').modal('show')
 }
 
 function modalCancel() {
     console.log('cancelling...');
+    // hide modal without making any changes
     $('#staticBackdrop').modal('hide')
 }
 
 function modalConfirm() {
     console.log('confirming...');
-    // add ingredient to recipe
+
+    // add random ingredient to recipe
   
+    // hide modal
     $('#staticBackdrop').modal('hide')
 }
 
@@ -157,6 +194,11 @@ async function navigateHome() {
         window.location.pathname = '/index.html';
     }
     
+    // hide surprise ingredient button
+    document.querySelector('#btnSurprise').style.display = 'none';
+
+    // add event listener to surprise ingredient button
+    btnSurprise.addEventListener("click", showModal);
     
     // fetch static recipes from json file if there are no recipes already in the allRecipes array
     if (allRecipes === null || allRecipes.length < 3) {
@@ -173,9 +215,16 @@ async function navigateHome() {
 function navigateAddRecipe() {
     console.log('adding new recipe');
 
+    
+    
     if (window.location.pathname !== '/recipe-form.html') {
         window.location.pathname = '/recipe-form.html';
     }
+
+    // hide surprise ingredient button
+    // console.log('hiding surprise btn...');
+    // document.querySelector('#btnSurprise').style.display = 'none';
+    // console.log('btnsurprise hidden');
     
     // add sample recipe
     // addNewRecipe(
@@ -203,8 +252,6 @@ function navigateAddRecipe() {
 
 homeButton.addEventListener("click", navigateHome);
 addRecipeButton.addEventListener("click", navigateAddRecipe);
-
-btnSurprise.addEventListener("click", showModal);
 
 window.onload = (event) => {
     if (window.location.pathname === '/index.html') {
