@@ -111,7 +111,6 @@ function imageReplace () {
     }
 };
 
-
 function renderImage () {
     aside.innerHTML = "";
 
