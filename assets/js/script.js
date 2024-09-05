@@ -30,6 +30,8 @@ function modalCancel() {
 function modalConfirm() {
     console.log('confirming...');
     // add ingredient to recipe
+
+    // hide modal
     $('#staticBackdrop').modal('hide')
 }
 
@@ -171,7 +173,7 @@ async function navigateHome() {
 
 function navigateAddRecipe() {
     console.log('adding new recipe');
-    
+
     if (window.location.pathname !== '/recipe-form.html') {
         window.location.pathname = '/recipe-form.html';
     }
