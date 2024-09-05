@@ -230,8 +230,8 @@ function createRecipeCards() {
 async function navigateHome() {
     console.log('navigating home');
 
-    if (window.location.pathname !== '/index.html') {
-        window.location.pathname = '/index.html';
+    if (window.location.pathname !== '/recipe-book/index.html') {
+        window.location.pathname = '/recipe-book/index.html';
     }
     
     // hide surprise ingredient button
@@ -257,8 +257,8 @@ function navigateAddRecipe() {
 
     
     
-    if (window.location.pathname !== '/recipe-form.html') {
-        window.location.pathname = '/recipe-form.html';
+    if (window.location.pathname !== '/recipe-book/recipe-form.html') {
+        window.location.pathname = '/recipe-book/recipe-form.html';
     }
 
     // hide surprise ingredient button
@@ -294,7 +294,7 @@ homeButton.addEventListener("click", navigateHome);
 addRecipeButton.addEventListener("click", navigateAddRecipe);
 
 window.onload = (event) => {
-    if (window.location.pathname === '/index.html') {
+    if (window.location.pathname === '/recipe-book/index.html') {
         navigateHome();
         getRandomIngredients();
     }    
