@@ -61,46 +61,62 @@
     </div>
 
     <template id="recipe-final">
-        <section class="recipe-display">
-            <aside id="aside-final">
-              <img
-                class="headerimage"
-                src="assets/images/istockphoto-1490291782-612x612.jpg"
-              />
+        <section>
+            <aside>
             </aside>
         </section>
-        <section id="recipe-show">
-            <div class="container-fluid">
-                <div class="row box-container">
-                    <div class="col-md-12 px-4">
-                        <div class="box bg-light p-3">
-                            <h2 id="final-title"></h2>
-                            <p id="recipeId" style="display:none"></p>
-                            <p id="final-description"></p>
-                            <dl class="row">
-                                <dt class="col-sm-5">Servings</dt>
-                                <dd class="col-sm-7" id="final-servings"></dd>
-                                
-                                <dt class="col-sm-5">Time to Cook</dt>
-                                <dd class="col-sm-7" id="final-time"></dd>
-                                
-                                <dt class="col-sm-5">Ingredients</dt>
-                                <dd class="col-sm-7" id="final-ingredients">
-                                    <ul></ul>
-                                </dd>
-                              
-                                <dt class="col-sm-5">Cooking Steps</dt>
-                                <dd class="col-sm-7" id="final-steps">
-                                    <ol></ol>
-                                </dd>
-                              </dl>
-                        </div>  
+        <section>     
+         <div class="card">
+            <div class="card-body">
+                <h2 class="card-title" id="final-title"></h2>
+                  <p class="card-text" id="final-description"></p>
+                  <dl class="row">
+                    <dt class="col-sm-4">Servings</dt>
+                    <dd class="col-sm-8" id="final-servings"></dd>
+                    
+                    <dt class="col-sm-4">Time to Cook</dt>
+                    <dd class="col-sm-8" id="final-time"></dd>
+                  </dl>
+                  <p id="recipeId" style="display:none"></p>
+                  <div class="container my-4">
+                    <div class="accordion" id="recipeAccordion">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Ingredients
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#recipeAccordion">
+                          <div class="accordion-body" id="final-ingredients">
+                              <ul></ul>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                </div>
-            </div>
-        </section>
+                  </div>
+                  <div class="container my-4">
+                    <div class="accordion" id="recipeAccordion">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Cooking Steps
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#recipeAccordion">
+                          <div class="accordion-body" id="final-steps">
+                            <ol></ol>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+              </div>
+          </div>      
+        
+      </section>
+  
     </template>
-
+  
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

@@ -316,3 +316,34 @@ figcaption.blockquote-footer {
     height: auto; 
     max-width: 500px;
 }
+
+
+
+/* Accordion */
+#recipeAccordion .accordion-button {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: var(--header-alt); 
+  color: black;
+  border: none;
+  padding: 15px;
+}
+
+#recipeAccordion .accordion-button:not(.collapsed) {
+  background-color: var(--header-alt);
+}
+
+#recipeAccordion .accordion-body {
+  background-color: var(--form-bg);
+  color: black; 
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  padding: 20px;
+}
+
+#recipeAccordion .accordion-item {
+  border: 1px solid #ddd; 
+  border-radius: 5px;
+  margin-bottom: 10px; 
+}
