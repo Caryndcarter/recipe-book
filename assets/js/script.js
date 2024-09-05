@@ -31,21 +31,32 @@ function recipeClicked(recipeId) {
         const ingValue = allRecipes[recipeId].ingredients[i]; 
         ingItem.textContent = ingValue; 
         recipeFinal.querySelector('#final-ingredients ul').appendChild(ingItem);
-    }      
+    };      
 
     for (let i = 0; i <allRecipes[recipeId].steps.length; i++) {
         const stepItem = document.createElement('li');
         const stepsValue = allRecipes[recipeId].steps[i]; 
         stepItem.textContent = stepsValue; 
         recipeFinal.querySelector('#final-steps ol').appendChild(stepItem);
-    }   
+    };   
 
-     // show surprise ingredient button
-    btnSurprise.style.display = 'inline';
-    //renderImage(); 
+    const sectionEL = recipeFinal.querySelector('#recipe-show');
+    const asideEL = recipeFinal.querySelector('#aside-final');
+
+    //show the image for the recipe
+        asideEL.innerHTML = "";
+        const imageEl = document.createElement('img');  
+        asideEL.appendChild(imageEl);
+        imageEl.id = "form-image";
+
+    if (allRecipes[recipeId].image) {
+        imageEl.src = allRecipes[recipeId].image;  
+
+    }  else {
+        imageEl.src ="assets/images/istockphoto-1490291782-612x612.jpg"; 
+    }
 
     mainEl.appendChild(recipeFinal);
-
 };
 
 function showModal() {
