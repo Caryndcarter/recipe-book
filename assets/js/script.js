@@ -155,6 +155,8 @@ function createRecipeCards() {
     // clear the main element before repopulating
     mainEl.innerHTML = '';
 
+    console.log('creating recipe cards');
+
     // create and append framework for the card elements
     const cardFramework = document.createElement('div');
     cardFramework.setAttribute('class', 'row no-gutters card-deck');
@@ -230,10 +232,19 @@ function createRecipeCards() {
 async function navigateHome() {
     console.log('navigating home');
 
-    if (window.location.pathname !== '/recipe-book/index.html') {
-        window.location.pathname = '/recipe-book/index.html';
-    }
+    console.log(window.location);
+    if (window.location.protocol === 'https:') {
+        if (window.location.pathname !== '/recipe-book/index.html') {
+            window.location.pathname = '/recipe-book/index.html';
+        }
+    } else {
+        if (window.location.pathname !== '/index.html') {
+            window.location.pathname = '/index.html';
+        }
+    }    
     
+    createRecipeCards();
+
     // hide surprise ingredient button
     document.querySelector('#btnSurprise').style.display = 'none';
 
@@ -248,18 +259,21 @@ async function navigateHome() {
         localStorage.setItem('recipeStorage', JSON.stringify(allRecipes));
         await getStaticData();        
     }
-
-    createRecipeCards();    
 }
 
 function navigateAddRecipe() {
     console.log('adding new recipe');
 
-    
-    
-    if (window.location.pathname !== '/recipe-book/recipe-form.html') {
-        window.location.pathname = '/recipe-book/recipe-form.html';
+    if (window.location.protocol === 'https:') {
+        if (window.location.pathname !== '/recipe-book/recipe-form.html') {
+            window.location.pathname = '/recipe-book/recipe-form.html';
+        }
+    } else {
+        if (window.location.pathname !== '/recipe-form.html') {
+            window.location.pathname = '/recipe-form.html';
+        }
     }
+    
 
     // hide surprise ingredient button
     // console.log('hiding surprise btn...');
@@ -294,7 +308,7 @@ homeButton.addEventListener("click", navigateHome);
 addRecipeButton.addEventListener("click", navigateAddRecipe);
 
 window.onload = (event) => {
-    if (window.location.pathname === '/recipe-book/index.html') {
+    if ((window.location.protocol === 'https:' && window.location.pathname === '/recipe-book/index.html') || (window.location.protocol === 'http:' && window.location.pathname === '/index.html')) {
         navigateHome();
         getRandomIngredients();
     }    
