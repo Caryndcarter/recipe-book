@@ -306,7 +306,7 @@ figcaption.blockquote-footer {
   max-width: 100px; 
 }
 
-#errorMsg {
+#errorMsg, #errorMsg2, #errorMsg3 {
     color: red;
     opacity: .75;
   }
