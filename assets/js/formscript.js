@@ -151,6 +151,12 @@ function renderIngredients(event) {
 
     event.preventDefault(); 
 
+    if (!ingredientInput.value) {
+      
+        errorMessage2.textContent = "Please add one ingredient."
+     
+    } else {
+
     aside.querySelector('#ingredients').style.display = 'block'; 
 
     const listItem = document.createElement('li');
@@ -165,13 +171,20 @@ function renderIngredients(event) {
     submitStep.style.display = "block";
     stepLabel.style.display = "block";
     stepHeader.style.display = "block";
-}
+    }
+};
 
 
 //When the user clicks on adding a cooking step, render the list of steps on the side of the page.  Add the steps to the Steps Array.  Activate the "final recipe" button.  
 
 function renderSteps(event) {
     event.preventDefault(); 
+
+    if (!stepsInput.value) {
+      
+        errorMessage3.textContent = "Please add one step."
+     
+    } else {
 
     aside.querySelector('#steps').style.display = 'block';
     aside.querySelector('#final').style.display = 'block'; 
@@ -187,6 +200,8 @@ function renderSteps(event) {
 
     const submitButton = document.querySelector('#final');
     submitButton.addEventListener('click', loadLocalStorage);  
+
+    }
 };
 
 
@@ -313,13 +328,6 @@ function clearStorage () {
 /*
 
 
-function readLocalStorage() {
-
-    let storedRecipes = JSON.parse(localStorage.getItem('recipe')) || []; 
-  
-    return storedRecipes; 
-  
-};
 
 
 let redirectURL = '';

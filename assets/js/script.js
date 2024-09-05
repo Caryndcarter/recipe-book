@@ -14,12 +14,39 @@ if (storedRecipes !== null) {
 function recipeClicked(recipeId) {
     console.log(`recipe ${recipeId} clicked`);
 
-    // show surprise ingredient button
+    mainEl.innerHTML = ""; 
     btnSurprise.style.display = 'inline';
 
-    // clear contents of main element
-    mainEl.innerHTML = '';
-}
+    const finalTemplate = document.getElementById("recipe-final");
+  
+    const recipeFinal = finalTemplate.content.cloneNode(true);
+
+    recipeFinal.querySelector('#final-title').textContent = allRecipes[recipeId].title; 
+    recipeFinal.querySelector('#final-description').textContent = allRecipes[recipeId].description; 
+    recipeFinal.querySelector('#final-servings').textContent = allRecipes[recipeId].servings;
+    recipeFinal.querySelector('#final-time').textContent = allRecipes[recipeId].cookTime; 
+
+    for (let i = 0; i <allRecipes[recipeId].ingredients.length; i++) {
+        const ingItem = document.createElement('li');
+        const ingValue = allRecipes[recipeId].ingredients[i]; 
+        ingItem.textContent = ingValue; 
+        recipeFinal.querySelector('#final-ingredients ul').appendChild(ingItem);
+    }      
+
+    for (let i = 0; i <allRecipes[recipeId].steps.length; i++) {
+        const stepItem = document.createElement('li');
+        const stepsValue = allRecipes[recipeId].steps[i]; 
+        stepItem.textContent = stepsValue; 
+        recipeFinal.querySelector('#final-steps ol').appendChild(stepItem);
+    }   
+
+     // show surprise ingredient button
+    btnSurprise.style.display = 'inline';
+    //renderImage(); 
+
+    mainEl.appendChild(recipeFinal);
+
+};
 
 function showModal() {
     $('#staticBackdrop').modal({
