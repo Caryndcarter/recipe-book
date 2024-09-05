@@ -8,9 +8,11 @@
     padding-right: 15px;
 }
 
-ol, ul {
-    padding-left: 1rem !important;
+
+.dt {
+  padding-left: 20px !important; 
 }
+
 
 /*
   Resets
@@ -64,6 +66,7 @@ h6 {
   --header-alt: #C1D8C3; 
   --body-alt: #CD5C08;
   --header-small: #201E43;
+  --accordion: #c9e0d8;
 
 }
 
@@ -317,10 +320,14 @@ figcaption.blockquote-footer {
     max-width: 500px;
 }
 
+#second-card {
+  border: none;
+}
+
 
 
 /* Accordion */
-#recipeAccordion .accordion-button {
+.accordion .accordion-button {
   font-family: 'Arial', sans-serif;
   font-size: 18px;
   font-weight: bold;
@@ -330,11 +337,15 @@ figcaption.blockquote-footer {
   padding: 15px;
 }
 
-#recipeAccordion .accordion-button:not(.collapsed) {
+.accordion .accordion-button:hover {
+  background-color: var(--accordion)
+}
+
+.accordion .accordion-button:not(.collapsed) {
   background-color: var(--header-alt);
 }
 
-#recipeAccordion .accordion-body {
+.accordion .accordion-body {
   background-color: var(--form-bg);
   color: black; 
   font-family: 'Arial', sans-serif;
@@ -342,8 +353,27 @@ figcaption.blockquote-footer {
   padding: 20px;
 }
 
-#recipeAccordion .accordion-item {
+.accordion .accordion-item {
   border: 1px solid #ddd; 
   border-radius: 5px;
   margin-bottom: 10px; 
+}
+
+
+.accordion ol ul {
+  padding-left: 20px; 
+  line-height: 1.6; 
+}
+
+.accordion ul li {
+  margin-bottom: 15px;
+}
+
+.accordion ol li {
+  margin-bottom: 15px;
+}
+
+.accordion .accordion-button:focus {
+  outline: 2px solid #008080;
+  box-shadow: 0 0 0 0.25rem #003434(51, 255, 248, 0.574); 
 }
