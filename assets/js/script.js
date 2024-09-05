@@ -1,8 +1,8 @@
 const homeButton = document.querySelector("#home-button");
 const addRecipeButton = document.querySelector("#add-recipe-button");
-const mainEl = document.querySelector('#container')
+const mainEl = document.querySelector('#container');
 
-const btnSurprise = document.querySelector('#btnSurprise')
+const btnSurprise = document.querySelector('#btnSurprise');
 
 let allRecipes = [];
 const storedRecipes = JSON.parse(localStorage.getItem("recipeStorage")) || [];
@@ -13,6 +13,12 @@ if (storedRecipes !== null) {
 
 function recipeClicked(recipeId) {
     console.log(`recipe ${recipeId} clicked`);
+
+    // show surprise ingredient button
+    btnSurprise.style.display = 'inline';
+
+    // clear contents of main element
+    mainEl.innerHTML = '';
 }
 
 function showModal() {
@@ -152,6 +158,9 @@ function createRecipeCards() {
 async function navigateHome() {
     console.log('navigating home');
 
+    // hide surprise ingredient button
+    btnSurprise.style.display = 'none';
+
     if (window.location.pathname !== '/index.html') {
         window.location.pathname = '/index.html';
     }
@@ -171,6 +180,9 @@ async function navigateHome() {
 
 function navigateAddRecipe() {
     console.log('adding new recipe');
+
+    // hide surprise ingredient button
+    btnSurprise.style.display = 'none';
     
     if (window.location.pathname !== '/recipe-form.html') {
         window.location.pathname = '/recipe-form.html';
