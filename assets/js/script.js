@@ -61,10 +61,18 @@ function recipeClicked(recipeId) {
     }
 
     mainEl.appendChild(recipeFinal);
+
+    // if this recipe is not a static recipe, allow user to delete the recipe by adding the delete button
+    if (recipeId > 2) {
+        // add event listener to surprise ingredient button
+        const btnDelete = document.querySelector('#deleteRecipeButton');
+        btnDelete.addEventListener("click", showDeleteModal);
+        btnDelete.style.display = 'inline';
+    }
 };
 
-function showModal() {
-    $('#staticBackdrop').modal({
+function showIngredientModal() {
+    $('#ingredientModal').modal({
         keyboard: false
     })
 
@@ -74,16 +82,16 @@ function showModal() {
     document.querySelector('.modal-body').innerHTML = newRandomIngredient;
 
     // show modal
-    $('#staticBackdrop').modal('show')
+    $('#ingredientModal').modal('show')
 }
 
-function modalCancel() {
+function ingredientModalCancel() {
     console.log('cancelling...');
     // hide modal without making any changes
-    $('#staticBackdrop').modal('hide')
+    $('#ingredientModal').modal('hide')
 }
 
-function modalConfirm() {
+function ingredientModalConfirm() {
     console.log('confirming...');
 
     // get id of the recipe that is being viewed
@@ -99,7 +107,45 @@ function modalConfirm() {
     recipeClicked(recipeId);
 
     // hide modal
-    $('#staticBackdrop').modal('hide')
+    $('#ingredientModal').modal('hide')
+}
+
+function showDeleteModal() {
+    $('#deleteModal').modal({
+        keyboard: false
+    })
+
+    // show modal
+    $('#deleteModal').modal('show')
+
+    console.log('allRecipes array before recipe removal:');
+    console.log(allRecipes);
+}
+
+function deleteModalCancel() {
+    console.log('cancelling...');
+    // hide modal without making any changes
+    $('#deleteModal').modal('hide')
+}
+
+function deleteModalConfirm() {
+    // get id of the recipe that is being viewed
+    let recipeId = document.querySelector('#recipeId').textContent;
+    console.log(`deleting recipe with id ${recipeId}...`);    
+
+    // remove one element from the allRecipes array at the recipeId index
+    allRecipes.splice(recipeId, 1);
+
+    localStorage.setItem('recipeStorage', JSON.stringify(allRecipes));
+
+    console.log('allRecipes array after recipe removal:');
+    console.log(allRecipes);
+
+    // hide modal
+    $('#deleteModal').modal('hide')
+
+    // redirect to home page
+    navigateHome();
 }
 
 function addNewRecipe(recipeTitle, recipeDescription, recipeImage, recipeServings, recipeCookTime, recipeIngredients, recipeSteps) {
@@ -260,7 +306,7 @@ async function navigateHome() {
     document.querySelector('#btnSurprise').style.display = 'none';
 
     // add event listener to surprise ingredient button
-    btnSurprise.addEventListener("click", showModal);
+    btnSurprise.addEventListener("click", showIngredientModal);
     
     // fetch static recipes from json file if there are no recipes already in the allRecipes array
     if (allRecipes === null || allRecipes.length < 3) {
@@ -284,7 +330,6 @@ function navigateAddRecipe() {
             window.location.pathname = '/recipe-form.html';
         }
     }
-    
 
     // hide surprise ingredient button
     // console.log('hiding surprise btn...');
