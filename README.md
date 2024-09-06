@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/efb8ac12-d676-4b84-855f-dd24623c81b8)# Custom Recipe Book
+# Custom Recipe Book
 
 This project was done in order to make it easy to save your own recipes to a personalized online recipe book. You are given three recipes to start, and you can add as many custom recipes as you want. These custom recipes will be added to the home screen and saved in your browser for future reference. After creating a recipe, you can click on it on the home page to view it, and from here delete the recipe or even add a random ingredient to shake things up. We hope you enjoy using our custom recipe book!
 
