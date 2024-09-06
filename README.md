@@ -4,6 +4,9 @@ This project was done in order to make it easy to save your own recipes to a per
 
 [Click here to try it out!](https://caryndcarter.github.io/recipe-book/index.html)
 
+### Video Demonstration
+TODO
+
 ## How To Use Our Custom Recipe Book
 
 ### How To View a Recipe
@@ -24,3 +27,13 @@ If you want to add your own recipe, find the navigation link in the top-right of
 ![Recipe Steps Screen](./assets/images/recipe-steps.png)
 4. Once you have finished adding the cooking steps, you can press the "View Final Recipe" button on the left side of the screen to finalize your recipe, storing it on the website until you decide to clear 
 ![Final Recipe Screen](./assets/images/final-recipe.png)
+
+---
+
+### How to Delete a Custom Recipe
+1. TODO
+
+---
+
+### Add a Random Ingredient to a Recipe
+1. TODO
