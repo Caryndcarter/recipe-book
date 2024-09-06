@@ -1,4 +1,5 @@
 const homeButton = document.querySelector("#home-button");
+const headerTextHome = document.querySelector('#headerTextHome');
 const addRecipeButton = document.querySelector("#add-recipe-button");
 const mainEl = document.querySelector('#container');
 
@@ -291,6 +292,7 @@ function navigateAddRecipe() {
 }
 
 homeButton.addEventListener("click", navigateHome);
+headerTextHome.addEventListener("click", navigateHome);
 addRecipeButton.addEventListener("click", navigateAddRecipe);
 
 window.onload = (event) => {
