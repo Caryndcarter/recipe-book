@@ -116,35 +116,60 @@
 
     <template id="recipe-final">
       
-      <section>
-          <div class="container-fluid">
-              <div class="row box-container">
-                  <div class="col-md-12 px-4">
-                      <div class="box bg-light p-3">
-                          <h2 id="final-title"></h2>
-                          <p id="final-description"></p>
-                          <dl class="row">
-                              <dt class="col-sm-5">Servings</dt>
-                              <dd class="col-sm-7" id="final-servings"></dd>
-                              
-                              <dt class="col-sm-5">Time to Cook</dt>
-                              <dd class="col-sm-7" id="final-time"></dd>
-                              
-                              <dt class="col-sm-5">Ingredients</dt>
-                              <dd class="col-sm-7" id="final-ingredients">
-                                  <ul></ul>
-                              </dd>
-                            
-                              <dt class="col-sm-5">Cooking Steps</dt>
-                              <dd class="col-sm-7" id="final-steps">
-                                  <ol></ol>
-                              </dd>
-                            </dl>
-                      </div>  
-                  </div>
+      <section>     
+       <div class="card">
+          <div class="card-body">
+            <div class="card" id="second-card">
+              <div class="card-body">
+              <h2 class="card-title" id="final-title"></h2>
+                <p class="card-text" id="final-description"></p>
+                <dl class="row">
+                  <dt class="col-sm-4">Servings</dt>
+                  <dd class="col-sm-8" id="final-servings"></dd>
+                  
+                  <dt class="col-sm-4">Time to Cook</dt>
+                  <dd class="col-sm-8" id="final-time"></dd>
+                </dl>
+                </div>
               </div>
-          </div>
-      </section>
+
+                <div class="container my-4">
+                  <div class="accordion" id="accordionOne">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Ingredients
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionOne">
+                        <div class="accordion-body" id="final-ingredients">
+                            <ul></ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="container my-4">
+                  <div class="accordion" id="accordionTwo">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                          Cooking Steps
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionTwo">
+                        <div class="accordion-body" id="final-steps">
+                          <ol></ol>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>  
+            </div>
+        </div>      
+      
+    </section>
+
   </template>
   
 
