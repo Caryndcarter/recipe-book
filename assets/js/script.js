@@ -1,4 +1,5 @@
 const homeButton = document.querySelector("#home-button");
+const headerTextHome = document.querySelector('#headerTextHome');
 const addRecipeButton = document.querySelector("#add-recipe-button");
 const mainEl = document.querySelector('#container');
 
@@ -61,60 +62,64 @@ function recipeClicked(recipeId) {
     }
 
     mainEl.appendChild(recipeFinal);
+
+    // if this recipe is not a static recipe, allow user to delete the recipe by adding the delete button
+    if (recipeId > 2) {
+        // add event listener to surprise ingredient button
+        const btnDelete = document.querySelector('#deleteRecipeButton');
+        btnDelete.addEventListener("click", showDeleteModal);
+        btnDelete.style.display = 'inline';
+    }
 };
 
-function showModal() {
-    $('#staticBackdrop').modal({
-        keyboard: false
-    })
-
+function showIngredientModal() {
     // get random ingredient from list of all random ingredients
     const randomIndex = Math.floor(Math.random() * allRandomIngredients.length);
     newRandomIngredient = allRandomIngredients[randomIndex];
     document.querySelector('.modal-body').innerHTML = newRandomIngredient;
-
     // show modal
-    $('#staticBackdrop').modal('show')
+    $('#ingredientModal').modal('show')
 }
 
-function modalCancel() {
-    console.log('cancelling...');
+function ingredientModalCancel() {
     // hide modal without making any changes
-    $('#staticBackdrop').modal('hide')
+    $('#ingredientModal').modal('hide')
 }
 
-function modalConfirm() {
-    console.log('confirming...');
-
+function ingredientModalConfirm() {
     // get id of the recipe that is being viewed
     let recipeId = document.querySelector('#recipeId').textContent;
-
     // add the random ingredient to the recipe
     allRecipes[recipeId].ingredients.push(newRandomIngredient);
-
     // update localStorage with the updated recipe
     localStorage.setItem("recipeStorage", JSON.stringify(allRecipes));
-
     // reload recipe page to show added ingredient
     recipeClicked(recipeId);
-
     // hide modal
-    $('#staticBackdrop').modal('hide')
+    $('#ingredientModal').modal('hide')
 }
 
-function addNewRecipe(recipeTitle, recipeDescription, recipeImage, recipeServings, recipeCookTime, recipeIngredients, recipeSteps) {
-    let newRecipe = {
-        title: recipeTitle,
-        description: recipeDescription,
-        image: recipeImage,
-        servings: recipeServings,
-        cookTime: recipeCookTime,
-        ingredients: recipeIngredients,
-        steps: recipeSteps,
-    }
-    allRecipes.push(newRecipe);
-    localStorage.setItem("recipeStorage", JSON.stringify(allRecipes));
-    createRecipeCards();
+function showDeleteModal() {
+    // show modal
+    $('#deleteModal').modal('show')
+}
+
+function deleteModalCancel() {
+    // hide modal without making any changes
+    $('#deleteModal').modal('hide')
+}
+
+function deleteModalConfirm() {
+    // get id of the recipe that is being viewed
+    let recipeId = document.querySelector('#recipeId').textContent;  
+    // remove one element from the allRecipes array at the recipeId index
+    allRecipes.splice(recipeId, 1);
+    // update local storage
+    localStorage.setItem('recipeStorage', JSON.stringify(allRecipes));
+    // hide modal
+    $('#deleteModal').modal('hide')
+    // redirect to home page
+    navigateHome();
 }
 
 // function to fetch static starter recipes from JSON file
@@ -260,7 +265,7 @@ async function navigateHome() {
     document.querySelector('#btnSurprise').style.display = 'none';
 
     // add event listener to surprise ingredient button
-    btnSurprise.addEventListener("click", showModal);
+    btnSurprise.addEventListener("click", showIngredientModal);
     
     // fetch static recipes from json file if there are no recipes already in the allRecipes array
     if (allRecipes === null || allRecipes.length < 3) {
@@ -284,42 +289,15 @@ function navigateAddRecipe() {
             window.location.pathname = '/recipe-form.html';
         }
     }
-    
-
-    // hide surprise ingredient button
-    // console.log('hiding surprise btn...');
-    // document.querySelector('#btnSurprise').style.display = 'none';
-    // console.log('btnsurprise hidden');
-    
-    // add sample recipe
-    // addNewRecipe(
-    //     "Sample Recipe", 
-    //     "Flaky and buttery cookies with a delicious cinnamon sugar crust.",
-    //     "https://placehold.co/600x400",
-    //     12,
-    //     "50 minutes",
-    //     ["1 premade pie crust",
-    //     "all purpose flour for dusting",
-    //     "1 large egg",
-    //     "1 teaspoon whole milk",
-    //     "2 tablespoons granulated sugar",
-    //     "3/4 teaspoon ground cinnamon",
-    //     "1/8 teaspoon kosher salt",
-    //     "1 1/2 tablespoons unsalted butter, melted and cooled"],
-    //     ["Gather all ingredients. Preheat the oven to 375 degrees F (190 degrees C). Line 2 large rimmed baking sheets with parchment paper; set aside.",
-    //     "Roll premade pie crust to 1/8-inch thickness on a lightly floured work surface, and cut using desired cookie cutter shapes.",
-    //     "Transfer cut-outs to prepared baking sheets, leaving about a 1/2-inch space between each cookie. Repeat with remaining dough, rerolling scraps once.",
-    //     "Whisk together egg and milk in a small bowl until combined. Using a pastry brush, brush the tops of each cookie evenly with egg mixture; discard remaining egg mixture. Whisk together sugar, cinnamon, and salt in a small bowl until evenly combined, sprinkle evenly over brushed cookies.",
-    //     "Bake cookies, one baking sheet at a time, in the preheated oven until the edges and bottoms of cookies just become golden brown, about 15 minutes.",
-    //     "Remove from oven and brush tops of each cookie lightly with melted butter, let cool slightly on baking sheet, about 5 minutes. Serve warm."]
-    // );
 }
 
 homeButton.addEventListener("click", navigateHome);
+headerTextHome.addEventListener("click", navigateHome);
 addRecipeButton.addEventListener("click", navigateAddRecipe);
 
 window.onload = (event) => {
-    if ((window.location.protocol === 'https:' && window.location.pathname === '/recipe-book/index.html') || (window.location.protocol === 'http:' && window.location.pathname === '/index.html')) {
+    if ((window.location.protocol === 'https:' && (window.location.pathname === '/recipe-book/' || window.location.pathname === '/recipe-book/index.html')) 
+        || (window.location.protocol === 'http:' && window.location.pathname === '/index.html')) {
         navigateHome();
         getRandomIngredients();
     }    

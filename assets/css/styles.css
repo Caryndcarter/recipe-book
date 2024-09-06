@@ -8,9 +8,11 @@
     padding-right: 15px;
 }
 
-ol, ul {
-    padding-left: 1rem !important;
+
+.dt {
+  padding-left: 20px !important; 
 }
+
 
 /*
   Resets
@@ -64,6 +66,7 @@ h6 {
   --header-alt: #C1D8C3; 
   --body-alt: #CD5C08;
   --header-small: #201E43;
+  --accordion: #c9e0d8;
 
 }
 
@@ -160,8 +163,8 @@ aside {
     display: flex;
     flex-direction: column; 
     gap: 20px;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 aside, 
@@ -315,4 +318,69 @@ figcaption.blockquote-footer {
     width: 500px;
     height: auto; 
     max-width: 500px;
+}
+
+#second-card {
+  border: none;
+}
+
+#final-description {
+  padding-bottom: 15px; 
+  padding-top: 15px; 
+}
+
+#headerTextHome {
+  cursor: pointer;
+}
+
+/* Accordion */
+.accordion .accordion-button {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: var(--header-alt); 
+  color: black;
+  border: none;
+  padding: 15px;
+}
+
+.accordion .accordion-button:hover {
+  background-color: var(--accordion)
+}
+
+.accordion .accordion-button:not(.collapsed) {
+  background-color: var(--header-alt);
+}
+
+.accordion .accordion-body {
+  background-color: var(--form-bg);
+  color: black; 
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  padding: 20px;
+}
+
+.accordion .accordion-item {
+  border: 1px solid #ddd; 
+  border-radius: 5px;
+  margin-bottom: 10px; 
+}
+
+
+.accordion ol ul {
+  padding-left: 20px; 
+  line-height: 1.6; 
+}
+
+.accordion ul li {
+  margin-bottom: 20px;
+}
+
+.accordion ol li {
+  margin-bottom: 20px;
+}
+
+.accordion .accordion-button:focus {
+  outline: 2px solid #008080;
+  box-shadow: 0 0 0 0.25rem #003434(51, 255, 248, 0.574); 
 }
