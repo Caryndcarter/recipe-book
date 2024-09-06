@@ -163,8 +163,8 @@ aside {
     display: flex;
     flex-direction: column; 
     gap: 20px;
-  justify-content: center;
-  align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 aside, 
@@ -324,6 +324,11 @@ figcaption.blockquote-footer {
   border: none;
 }
 
+#final-description {
+  padding-bottom: 15px; 
+  padding-top: 15px; 
+}
+
 
 
 /* Accordion */
@@ -366,11 +371,11 @@ figcaption.blockquote-footer {
 }
 
 .accordion ul li {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .accordion ol li {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .accordion .accordion-button:focus {
