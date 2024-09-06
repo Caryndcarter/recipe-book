@@ -1,8 +1,10 @@
 # Custom Recipe Book
 
+This project was done in order to make it easy to save your own recipes to a personalized online recipe book. You are given three recipes to start, and you can add as many custom recipes as you want. These custom recipes will be added to the home screen and saved in your browser for future reference. After creating a recipe, you can click on it on the home page to view it, and from here delete the recipe or even add a random ingredient to shake things up. We hope you enjoy using our custom recipe book!
+
 [Click here to try it out!](https://caryndcarter.github.io/recipe-book/index.html)
 
-## Instructions
+## How To Use Our Custom Recipe Book
 
 ### How To View a Recipe
 After opening the website using the link provided above, you will be presented with the home screen. This screen shows a card for each recipe that has been added to the site by you, in addition to three recipes we've provided to get you started.
