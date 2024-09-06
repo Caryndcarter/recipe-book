@@ -337,7 +337,8 @@ homeButton.addEventListener("click", navigateHome);
 addRecipeButton.addEventListener("click", navigateAddRecipe);
 
 window.onload = (event) => {
-    if ((window.location.protocol === 'https:' && window.location.pathname === '/recipe-book/index.html') || (window.location.protocol === 'http:' && window.location.pathname === '/index.html')) {
+    if ((window.location.protocol === 'https:' && (window.location.pathname === '/recipe-book/' || window.location.pathname === '/recipe-book/index.html')) 
+        || (window.location.protocol === 'http:' && window.location.pathname === '/index.html')) {
         navigateHome();
         getRandomIngredients();
     }    
