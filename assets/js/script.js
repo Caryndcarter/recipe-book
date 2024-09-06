@@ -72,78 +72,51 @@ function recipeClicked(recipeId) {
 };
 
 function showIngredientModal() {
-    $('#ingredientModal').modal({
-        keyboard: false
-    })
-
     // get random ingredient from list of all random ingredients
     const randomIndex = Math.floor(Math.random() * allRandomIngredients.length);
     newRandomIngredient = allRandomIngredients[randomIndex];
     document.querySelector('.modal-body').innerHTML = newRandomIngredient;
-
     // show modal
     $('#ingredientModal').modal('show')
 }
 
 function ingredientModalCancel() {
-    console.log('cancelling...');
     // hide modal without making any changes
     $('#ingredientModal').modal('hide')
 }
 
 function ingredientModalConfirm() {
-    console.log('confirming...');
-
     // get id of the recipe that is being viewed
     let recipeId = document.querySelector('#recipeId').textContent;
-
     // add the random ingredient to the recipe
     allRecipes[recipeId].ingredients.push(newRandomIngredient);
-
     // update localStorage with the updated recipe
     localStorage.setItem("recipeStorage", JSON.stringify(allRecipes));
-
     // reload recipe page to show added ingredient
     recipeClicked(recipeId);
-
     // hide modal
     $('#ingredientModal').modal('hide')
 }
 
 function showDeleteModal() {
-    $('#deleteModal').modal({
-        keyboard: false
-    })
-
     // show modal
     $('#deleteModal').modal('show')
-
-    console.log('allRecipes array before recipe removal:');
-    console.log(allRecipes);
 }
 
 function deleteModalCancel() {
-    console.log('cancelling...');
     // hide modal without making any changes
     $('#deleteModal').modal('hide')
 }
 
 function deleteModalConfirm() {
     // get id of the recipe that is being viewed
-    let recipeId = document.querySelector('#recipeId').textContent;
-    console.log(`deleting recipe with id ${recipeId}...`);    
-
+    let recipeId = document.querySelector('#recipeId').textContent;  
     // remove one element from the allRecipes array at the recipeId index
     allRecipes.splice(recipeId, 1);
-
+    // update local storage
     localStorage.setItem('recipeStorage', JSON.stringify(allRecipes));
-
-    console.log('allRecipes array after recipe removal:');
-    console.log(allRecipes);
-
     // hide modal
     $('#deleteModal').modal('hide')
-
     // redirect to home page
     navigateHome();
 }
