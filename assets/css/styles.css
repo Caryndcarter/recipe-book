@@ -329,7 +329,9 @@ figcaption.blockquote-footer {
   padding-top: 15px; 
 }
 
-
+#headerTextHome {
+  cursor: pointer;
+}
 
 /* Accordion */
 .accordion .accordion-button {
