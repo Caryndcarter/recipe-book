@@ -21,7 +21,7 @@ function recipeClicked(recipeId) {
     mainEl.innerHTML = ""; 
     btnSurprise.style.display = 'inline';
 
-    const finalTemplate = document.getElementById("recipe-final");
+    const finalTemplate = document.getElementById("recipe-final2");
   
     const recipeFinal = finalTemplate.content.cloneNode(true);
 
@@ -35,14 +35,14 @@ function recipeClicked(recipeId) {
         const ingItem = document.createElement('li');
         const ingValue = allRecipes[recipeId].ingredients[i]; 
         ingItem.textContent = ingValue; 
-        recipeFinal.querySelector('#final-ingredients ul').appendChild(ingItem);
+        recipeFinal.querySelector('#final-ingredients2 ul').appendChild(ingItem);
     };      
 
     for (let i = 0; i <allRecipes[recipeId].steps.length; i++) {
         const stepItem = document.createElement('li');
         const stepsValue = allRecipes[recipeId].steps[i]; 
         stepItem.textContent = stepsValue; 
-        recipeFinal.querySelector('#final-steps ol').appendChild(stepItem);
+        recipeFinal.querySelector('#final-steps2 ol').appendChild(stepItem);
     };   
 
     const sectionEL = recipeFinal.querySelector('#recipe-show');
