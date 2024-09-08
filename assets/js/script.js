@@ -196,14 +196,16 @@ function createRecipeCards() {
                 recipeClicked(i);
             });
 
-            // create and append recipe image if there is an image associated with the recipe
+            // create and append recipe image if there is an image associated with the recipe            
+            let recipeImage = document.createElement('img');
             if (recipe.image !== '' && recipe.image !== null) {
-                let recipeImage = document.createElement('img');
                 recipeImage.setAttribute('src', recipe.image);
-                recipeImage.setAttribute('class', 'card-img-top');
-                recipeImage.setAttribute('alt', 'Recipe Image');
-                newCard.append(recipeImage);
+            } else {
+                recipeImage.setAttribute('src', 'assets/images/istockphoto-1490291782-612x612.jpg')
             }
+            recipeImage.setAttribute('class', 'card-img-top');
+            recipeImage.setAttribute('alt', 'Recipe Image');
+            newCard.append(recipeImage);
 
             // create and append card body
             let cardBody = document.createElement('div');
