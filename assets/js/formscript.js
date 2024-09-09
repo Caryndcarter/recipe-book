@@ -175,6 +175,14 @@ function buildRecipeElement () {
   
     aside.appendChild(recipeInfo);
 
+    }  else {
+
+        document.querySelector('#h2Id').textContent = titleInput.value;
+        document.querySelector('#description-quote').textContent = descriptionInput.value;
+        document.querySelector('#servings').textContent = servingsInput.value;
+        document.querySelector('#time').textContent = timeInput.value;
+    
+    
     }
 
 
