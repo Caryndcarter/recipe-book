@@ -15,6 +15,52 @@ if (storedRecipes !== null) {
     allRecipes = storedRecipes;
 };
 
+
+//When the view final recipe button is clicked, use the final recipe template and render the final recipe.  Clear the right section of the screen and append the final recipe.  
+
+function buildFinalRecipe () {
+
+    const formSection = document.querySelector('#form-section');
+    const surpriseButton = document.querySelector('#btnSurprise');
+    surpriseButton.style.display = "inline"; 
+
+    let storedRecipes = JSON.parse(localStorage.getItem('recipeStorage')) || []; 
+    const recipeId = storedRecipes.length -1; 
+
+    const finalTemplate = document.getElementById("recipe-final");
+  
+    const recipeFinal = finalTemplate.content.cloneNode(true);
+
+    recipeFinal.querySelector('#final-title').textContent = storedRecipes[recipeId].title; 
+    recipeFinal.querySelector('#final-description').textContent = storedRecipes[recipeId].description; 
+    recipeFinal.querySelector('#final-servings').textContent = storedRecipes[recipeId].servings;
+    recipeFinal.querySelector('#final-time').textContent = storedRecipes[recipeId].cookTime; 
+    recipeFinal.querySelector('#recipeId').textContent = recipeId; 
+
+    for (let i = 0; i <storedRecipes[recipeId].ingredients.length; i++) {
+        const ingItem = document.createElement('li');
+        const ingValue = storedRecipes[recipeId].ingredients[i]; 
+        ingItem.textContent = ingValue; 
+        recipeFinal.querySelector('#final-ingredients ul').appendChild(ingItem);
+    }      
+
+    for (let i = 0; i <storedRecipes[recipeId].steps.length; i++) {
+        const stepItem = document.createElement('li');
+        const stepsValue = storedRecipes[recipeId].steps[i]; 
+        stepItem.textContent = stepsValue; 
+        recipeFinal.querySelector('#final-steps ol').appendChild(stepItem);
+    }   
+
+    renderImage(); 
+
+    formSection.innerHTML = "";
+    formSection.appendChild(recipeFinal);
+
+
+};
+
+
+//Function to render the final recipe if recipe is clicked on the homepage.  
 function recipeClicked(recipeId) {
     console.log(`recipe ${recipeId} clicked`);
 
@@ -74,12 +120,14 @@ function recipeClicked(recipeId) {
 
 function showIngredientModal() {
     // get random ingredient from list of all random ingredients
-    const randomIndex = Math.floor(Math.random() * allRandomIngredients.length);
+
+   const randomIndex = Math.floor(Math.random() * allRandomIngredients.length);
     newRandomIngredient = allRandomIngredients[randomIndex];
-    document.querySelector('.modal-body').innerHTML = newRandomIngredient;
+    document.querySelector('.modal-body').innerHTML = newRandomIngredient + " " + randomIndex;
     // show modal
     $('#ingredientModal').modal('show')
-}
+
+}; 
 
 function ingredientModalCancel() {
     // hide modal without making any changes
@@ -89,12 +137,20 @@ function ingredientModalCancel() {
 function ingredientModalConfirm() {
     // get id of the recipe that is being viewed
     let recipeId = document.querySelector('#recipeId').textContent;
+
+    allRecipes =  JSON.parse(localStorage.getItem('recipeStorage'));
+
     // add the random ingredient to the recipe
     allRecipes[recipeId].ingredients.push(newRandomIngredient);
     // update localStorage with the updated recipe
     localStorage.setItem("recipeStorage", JSON.stringify(allRecipes));
     // reload recipe page to show added ingredient
-    recipeClicked(recipeId);
+    if (window.location.pathname === '/recipe-book/index.html' || window.location.pathname === '/index.html') {
+        recipeClicked(recipeId);
+    } else {
+        buildFinalRecipe(); 
+    } 
+    
     // hide modal
     $('#ingredientModal').modal('hide')
 }
@@ -299,6 +355,8 @@ window.onload = (event) => {
     if ((window.location.protocol === 'https:' && (window.location.pathname === '/recipe-book/' || window.location.pathname === '/recipe-book/index.html')) 
         || (window.location.protocol === 'http:' && window.location.pathname === '/index.html')) {
         navigateHome();
-        getRandomIngredients();
+       
     }    
+
+    getRandomIngredients();
 };
