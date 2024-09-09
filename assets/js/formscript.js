@@ -229,10 +229,12 @@ function loadLocalStorage () {
 
 };
 
-
+/*
 //When the view final recipe button is clicked, use the final recipe template and render the final recipe.  Clear the right section of the screen and append the final recipe.  
 
 function buildFinalRecipe () {
+
+    let storedRecipes = JSON.parse(localStorage.getItem('recipeStorage')) || []; 
 
     const finalTemplate = document.getElementById("recipe-final");
   
@@ -242,6 +244,7 @@ function buildFinalRecipe () {
     recipeFinal.querySelector('#final-description').textContent = descriptionInput.value; 
     recipeFinal.querySelector('#final-servings').textContent = servingsInput.value;
     recipeFinal.querySelector('#final-time').textContent = timeInput.value; 
+    recipeFinal.querySelector('#recipeId').textContent = storedRecipes.length -1; 
 
     for (let i = 0; i <ingredientsArray.length; i++) {
         const ingItem = document.createElement('li');
@@ -265,6 +268,12 @@ function buildFinalRecipe () {
 
 };
   
+*/
+
+window.onload = (event) => {
+    getRandomIngredients(); 
+
+};
 
 // EVENT LISTENERS FOR THE 3 FORM BUTTONS (basics, ingredients, and steps)
 
@@ -273,6 +282,8 @@ submitBasics.addEventListener('click', recordRecipe);
 submitIngredient.addEventListener('click', renderIngredients);
 
 submitStep.addEventListener('click', renderSteps);
+
+btnSurprise.addEventListener('click', showIngredientModal);
 
 
 
@@ -285,68 +296,6 @@ function clearStorage () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  //  Create a function called `storeLocalStorage` that takes a given object and saves the new data to the existing recipe data in local storage.
-  
-//function storeLocalStorage(recipe) {
-  
-    //let storedRecipes = readLocalStorage();      
-  
-        ///storedRecipes.push(recipe);
-        //localStorage.setItem('recipes', JSON.stringify(storedRecipes));
-//};
-
-
-  
-/*function renderRecipeList() {
-     
-    const recipeList = JSON.parse(localStorage.getItem('recipes'));
-    
-    if (recipeList !== null) {
-
-        for (let i = 0; i <recipeList.length; i++) {
-            imageReplace(recipeList[i]);
-        }      
-    }
-}; */
-
-
-
-/*
-
-
-
-
-let redirectURL = '';
-
-const redirectPage = function (url) {
-        console.log("im alive");
-          redirectURL = url;
-          location.assign(url);
-     };
-
-
-function submitButtonEvent (event) {
-    
-        event.preventDefault(); 
-        const submit = querySelector('#final');
-        submit.addEventListener('click', redirectPage("recipe-final.html"));
-        
-    };
-
-*/
 
   
 
