@@ -102,14 +102,26 @@ function recordRecipe(event) {
 
 function imageReplace () {
 
-    if (imageInput.value){
+    let imageElement = document.createElement('img');  
+    imageElement.id = "form-image"; 
+    imageElement.src = "assets/images/istockphoto-1490291782-612x612.jpg";
+    aside.appendChild(imageElement);
+
+    if (imageInput.value || imageElement){
         renderImage(); 
         buildRecipeElement();
 
-    } else {
+    } else if (imageElement) {
+
+        //aside.innerHTML = "";
+        aside.appendChild(imageElement);
         buildRecipeElement();
     }
+
 };
+       // imageInput.value = "assets/images/istockphoto-1490291782-612x612.jpg";
+       
+   
 
 function renderImage () {
     aside.innerHTML = "";

@@ -4,6 +4,14 @@ This project was done in order to make it easy to save your own recipes to a per
 
 [Click here to try it out!](https://caryndcarter.github.io/recipe-book/index.html)
 
+### Table of Contents
+-[Video Demonstration](#video-demonstration)
+-[How To View a Recipe](#how-to-view-a-recipe)
+-[How to Add a New Recipe](#how-to-add-a-new-recipe)
+-[How to Delete a Custom Recipe](#how-to-delete-a-custom-recipe)
+-[Add a Random Surprise Ingredient](#add-a-random-surprise-ingredient-to-a-recipe)
+-[Technologies Used in this Project](#technologies-used-in-this-project)
+
 ### Video Demonstration
 TODO
 
@@ -37,6 +45,7 @@ When viewing a custom recipe, you can delete the recipe by following these steps
 3. At the bottom of the recipe details, below the steps, there is a red outlined button with a trash can icon that says "Delete Recipe"
 4. Click the "Delete Recipe" button and a confirmation modal will appear, asking if you really meant to delete the recipe
 5. To confirm the deletion of the recipe, click confirm. The recipe will be deleted from the Custom Recipe Book and you will be redirected to the home screen.
+![Delete Recipe Screen](./assets/images/delete-recipe.png)
 
 ---
 
@@ -45,6 +54,8 @@ When viewing any recipe, you can add a random surprise ingredient to that recipe
 1. Locate the yellow button at the bottom of the page that says "Add a Surprise Ingredient"
 2. Click the button. A modal will show up telling you the surprise ingredient that was randomly chosen, and you can either confirm the addition of the surprise ingredient or cancel the request.
 3. If you click confirm, the surprise ingredient will be added to the list of ingredients for that recipe, and the page will update to reflect the addition of the new ingredient. If you click cancel, no changes will be made to the recipe.
+![Random Ingredient Screen](./assets/images/add-random-ingredient.png)
+
 
 ### Technologies Used in This Project
 - HTML
