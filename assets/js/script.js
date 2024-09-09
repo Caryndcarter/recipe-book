@@ -334,14 +334,9 @@ async function navigateHome() {
 function navigateAddRecipe() {
     // determine if website is being run locally or on github pages because the path is slightly different
     if (window.location.protocol === 'https:') {
-
-        if (window.location.pathname !== '/recipe-book/recipe-form.html') {
-            window.location.pathname = '/recipe-book/recipe-form.html';
-        }
+        window.location.pathname = '/recipe-book/recipe-form.html';
     } else {
-        if (window.location.pathname !== '/recipe-form.html') {
-            window.location.pathname = '/recipe-form.html';
-        }
+        window.location.pathname = '/recipe-form.html';
     }
 }
 
