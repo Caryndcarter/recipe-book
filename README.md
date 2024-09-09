@@ -5,12 +5,12 @@ This project was done in order to make it easy to save your own recipes to a per
 [Click here to try it out!](https://caryndcarter.github.io/recipe-book/index.html)
 
 ### Table of Contents
--[Video Demonstration](#video-demonstration)
--[How To View a Recipe](#how-to-view-a-recipe)
--[How to Add a New Recipe](#how-to-add-a-new-recipe)
--[How to Delete a Custom Recipe](#how-to-delete-a-custom-recipe)
--[Add a Random Surprise Ingredient](#add-a-random-surprise-ingredient-to-a-recipe)
--[Technologies Used in this Project](#technologies-used-in-this-project)
+- [Video Demonstration](#video-demonstration)
+- [How To View a Recipe](#how-to-view-a-recipe)
+- [How to Add a New Recipe](#how-to-add-a-new-recipe)
+- [How to Delete a Custom Recipe](#how-to-delete-a-custom-recipe)
+- [Add a Random Surprise Ingredient](#add-a-random-surprise-ingredient-to-a-recipe)
+- [Technologies Used in this Project](#technologies-used-in-this-project)
 
 ### Video Demonstration
 TODO
