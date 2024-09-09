@@ -31,9 +31,23 @@ If you want to add your own recipe, find the navigation link in the top-right of
 ---
 
 ### How to Delete a Custom Recipe
-1. TODO
+When viewing a custom recipe, you can delete the recipe by following these steps. Note: starter recipes cannot be deleted, only custom recipes added by the user can be deleted.
+1. Go to the home screen by clicking the "Home" navigation button or by clicking the header text "Custom Recipe Book"
+2. Click on the recipe you would like to delete
+3. At the bottom of the recipe details, below the steps, there is a red outlined button with a trash can icon that says "Delete Recipe"
+4. Click the "Delete Recipe" button and a confirmation modal will appear, asking if you really meant to delete the recipe
+5. To confirm the deletion of the recipe, click confirm. The recipe will be deleted from the Custom Recipe Book and you will be redirected to the home screen.
 
 ---
 
-### Add a Random Ingredient to a Recipe
-1. TODO
+### Add a Random Surprise Ingredient to a Recipe
+When viewing any recipe, you can add a random surprise ingredient to that recipe by following these steps.
+1. Locate the yellow button at the bottom of the page that says "Add a Surprise Ingredient"
+2. Click the button. A modal will show up telling you the surprise ingredient that was randomly chosen, and you can either confirm the addition of the surprise ingredient or cancel the request.
+3. If you click confirm, the surprise ingredient will be added to the list of ingredients for that recipe, and the page will update to reflect the addition of the new ingredient. If you click cancel, no changes will be made to the recipe.
+
+### Technologies Used in This Project
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
