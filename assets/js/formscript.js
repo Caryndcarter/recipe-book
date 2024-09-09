@@ -117,8 +117,9 @@ function imageReplace () {
     };
 
     buildRecipeElement();
-
 };
+       
+   
 
 
 //Render the image on the final recipe screen after recipe form submission
