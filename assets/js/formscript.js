@@ -109,7 +109,7 @@ function imageReplace () {
    
         imageElement.src = imageInput.value; 
         imageElement.classList.add('img-fluid');
-   
+  
 
     } else {
          
