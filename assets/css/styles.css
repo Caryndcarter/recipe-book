@@ -301,8 +301,11 @@ figcaption.blockquote-footer {
   border: 1px solid rgba(33,33,33,.6);
 }
 
-
-
+.card-img-top {
+  width: 100%;
+  height: 45vh;
+  object-fit: cover;
+}
 
 /*
   IDs
