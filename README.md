@@ -21,7 +21,7 @@ TODO
 After opening the website using the link provided above, you will be presented with the home screen. This screen shows a card for each recipe that has been added to the site by you, in addition to three recipes we've provided to get you started.
 If you want to find out how to make one of these recipes, simply click anywhere on the card and you will be shown the detailed instructions on how to make that recipe.
 
-![Home Screen Image](./assets/images/home-page.png)
+![Home Screen Image](./assets/images/home-page2.png)
 
 ---
 
