@@ -13,7 +13,7 @@ This project was done in order to make it easy to save your own recipes to a per
 - [Technologies Used in this Project](#technologies-used-in-this-project)
 
 ### Video Demonstration
-TODO
+[Click here to view the video demonstration](https://github.com/Caryndcarter/recipe-book/blob/de0e9e7963e8cb9feb15f6e0a0d8a9bace7b7072/assets/demo-video/Custom_Recipe_Book_Demo.mp4)
 
 ## How To Use Our Custom Recipe Book
 
