@@ -123,7 +123,7 @@ function showIngredientModal() {
 
    const randomIndex = Math.floor(Math.random() * allRandomIngredients.length);
     newRandomIngredient = allRandomIngredients[randomIndex];
-    document.querySelector('.modal-body').innerHTML = newRandomIngredient + " " + randomIndex;
+    document.querySelector('.modal-body').innerHTML = newRandomIngredient;
     // show modal
     $('#ingredientModal').modal('show')
 
