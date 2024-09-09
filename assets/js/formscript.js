@@ -86,6 +86,8 @@ function recordRecipe(event) {
         errorMessage.textContent = "Please fill out all the recipe basic elements."
      
     } else {
+
+    errorMessage.textContent = ""; 
         
     ingredientInput.style.display = "block";
     submitIngredient.style.display = "block";
@@ -189,6 +191,8 @@ function renderIngredients(event) {
      
     } else {
 
+        errorMessage2.textContent = "";
+
     aside.querySelector('#ingredients').style.display = 'block'; 
 
     const listItem = document.createElement('li');
@@ -217,6 +221,8 @@ function renderSteps(event) {
         errorMessage3.textContent = "Please add one step."
      
     } else {
+
+        errorMessage3.textContent = ""; 
 
     aside.querySelector('#steps').style.display = 'block';
     aside.querySelector('#final').style.display = 'block'; 
