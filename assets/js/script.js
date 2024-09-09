@@ -10,18 +10,61 @@ let allRandomIngredients = [];
 let newRandomIngredient = '';
 
 const storedRecipes = JSON.parse(localStorage.getItem("recipeStorage")) || [];
-console.log(storedRecipes);
 if (storedRecipes !== null) {
     allRecipes = storedRecipes;
 };
 
-function recipeClicked(recipeId) {
-    console.log(`recipe ${recipeId} clicked`);
 
+//When the view final recipe button is clicked, use the final recipe template and render the final recipe.  Clear the right section of the screen and append the final recipe.  
+
+function buildFinalRecipe () {
+
+    const formSection = document.querySelector('#form-section');
+    const surpriseButton = document.querySelector('#btnSurprise');
+    surpriseButton.style.display = "inline"; 
+
+    let storedRecipes = JSON.parse(localStorage.getItem('recipeStorage')) || []; 
+    const recipeId = storedRecipes.length -1; 
+
+    const finalTemplate = document.getElementById("recipe-final");
+  
+    const recipeFinal = finalTemplate.content.cloneNode(true);
+
+    recipeFinal.querySelector('#final-title').textContent = storedRecipes[recipeId].title; 
+    recipeFinal.querySelector('#final-description').textContent = storedRecipes[recipeId].description; 
+    recipeFinal.querySelector('#final-servings').textContent = storedRecipes[recipeId].servings;
+    recipeFinal.querySelector('#final-time').textContent = storedRecipes[recipeId].cookTime; 
+    recipeFinal.querySelector('#recipeId').textContent = recipeId; 
+
+    for (let i = 0; i <storedRecipes[recipeId].ingredients.length; i++) {
+        const ingItem = document.createElement('li');
+        const ingValue = storedRecipes[recipeId].ingredients[i]; 
+        ingItem.textContent = ingValue; 
+        recipeFinal.querySelector('#final-ingredients ul').appendChild(ingItem);
+    }      
+
+    for (let i = 0; i <storedRecipes[recipeId].steps.length; i++) {
+        const stepItem = document.createElement('li');
+        const stepsValue = storedRecipes[recipeId].steps[i]; 
+        stepItem.textContent = stepsValue; 
+        recipeFinal.querySelector('#final-steps ol').appendChild(stepItem);
+    }   
+
+    renderImage(); 
+
+    formSection.innerHTML = "";
+    formSection.appendChild(recipeFinal);
+
+
+};
+
+
+//Function to render the final recipe if recipe is clicked on the homepage.  
+function recipeClicked(recipeId) {
     mainEl.innerHTML = ""; 
     btnSurprise.style.display = 'inline';
 
-    const finalTemplate = document.getElementById("recipe-final");
+    const finalTemplate = document.getElementById("recipe-final2");
   
     const recipeFinal = finalTemplate.content.cloneNode(true);
 
@@ -35,14 +78,14 @@ function recipeClicked(recipeId) {
         const ingItem = document.createElement('li');
         const ingValue = allRecipes[recipeId].ingredients[i]; 
         ingItem.textContent = ingValue; 
-        recipeFinal.querySelector('#final-ingredients ul').appendChild(ingItem);
+        recipeFinal.querySelector('#final-ingredients2 ul').appendChild(ingItem);
     };      
 
     for (let i = 0; i <allRecipes[recipeId].steps.length; i++) {
         const stepItem = document.createElement('li');
         const stepsValue = allRecipes[recipeId].steps[i]; 
         stepItem.textContent = stepsValue; 
-        recipeFinal.querySelector('#final-steps ol').appendChild(stepItem);
+        recipeFinal.querySelector('#final-steps2 ol').appendChild(stepItem);
     };   
 
     const sectionEL = recipeFinal.querySelector('#recipe-show');
@@ -74,12 +117,14 @@ function recipeClicked(recipeId) {
 
 function showIngredientModal() {
     // get random ingredient from list of all random ingredients
-    const randomIndex = Math.floor(Math.random() * allRandomIngredients.length);
+
+   const randomIndex = Math.floor(Math.random() * allRandomIngredients.length);
     newRandomIngredient = allRandomIngredients[randomIndex];
     document.querySelector('.modal-body').innerHTML = newRandomIngredient;
     // show modal
     $('#ingredientModal').modal('show')
-}
+
+}; 
 
 function ingredientModalCancel() {
     // hide modal without making any changes
@@ -89,12 +134,20 @@ function ingredientModalCancel() {
 function ingredientModalConfirm() {
     // get id of the recipe that is being viewed
     let recipeId = document.querySelector('#recipeId').textContent;
+
+    allRecipes =  JSON.parse(localStorage.getItem('recipeStorage'));
+
     // add the random ingredient to the recipe
     allRecipes[recipeId].ingredients.push(newRandomIngredient);
     // update localStorage with the updated recipe
     localStorage.setItem("recipeStorage", JSON.stringify(allRecipes));
     // reload recipe page to show added ingredient
-    recipeClicked(recipeId);
+    if (window.location.pathname === '/recipe-book/index.html' || window.location.pathname === '/index.html') {
+        recipeClicked(recipeId);
+    } else {
+        buildFinalRecipe(); 
+    } 
+    
     // hide modal
     $('#ingredientModal').modal('hide')
 }
@@ -134,7 +187,7 @@ async function getStaticData() {
             return res.json();
         })
         .then((data) => {
-            console.log(data.staticRecipes)
+            // add all static recipes to the allRecipes array and update local storage
             for (let i = 0; i < data.staticRecipes.length; i++) {
                 const element = data.staticRecipes[i];
                 allRecipes.push(element);                
@@ -157,7 +210,7 @@ async function getRandomIngredients() {
             return res.json();
         })
         .then((data) => {
-            console.log(data.randomIngredients)
+            // load random ingredients list into allRandomIngredients array
             for (let i = 0; i < data.randomIngredients.length; i++) {
                 const element = data.randomIngredients[i];
                 allRandomIngredients.push(element);                
@@ -170,8 +223,6 @@ async function getRandomIngredients() {
 function createRecipeCards() {
     // clear the main element before repopulating
     mainEl.innerHTML = '';
-
-    console.log('creating recipe cards');
 
     // create and append framework for the card elements
     const cardFramework = document.createElement('div');
@@ -196,9 +247,13 @@ function createRecipeCards() {
                 recipeClicked(i);
             });
 
-            // create and append recipe image
+            // create and append recipe image if there is an image associated with the recipe            
             let recipeImage = document.createElement('img');
-            recipeImage.setAttribute('src', recipe.image);
+            if (recipe.image !== '' && recipe.image !== null) {
+                recipeImage.setAttribute('src', recipe.image);
+            } else {
+                recipeImage.setAttribute('src', 'assets/images/istockphoto-1490291782-612x612.jpg')
+            }
             recipeImage.setAttribute('class', 'card-img-top');
             recipeImage.setAttribute('alt', 'Recipe Image');
             newCard.append(recipeImage);
@@ -246,9 +301,7 @@ function createRecipeCards() {
 }
 
 async function navigateHome() {
-    console.log('navigating home');
-
-    console.log(window.location);
+    // determine if website is being run locally or on github pages because the path is slightly different
     if (window.location.protocol === 'https:') {
         if (window.location.pathname !== '/recipe-book/index.html') {
             window.location.pathname = '/recipe-book/index.html';
@@ -269,7 +322,6 @@ async function navigateHome() {
     
     // fetch static recipes from json file if there are no recipes already in the allRecipes array
     if (allRecipes === null || allRecipes.length < 3) {
-        console.log('no recipes to log; getting static data');
         // if there are less than three recipes (representing at least the static data), clear the allRecipes array and get the static data
         allRecipes = [];
         localStorage.setItem('recipeStorage', JSON.stringify(allRecipes));
@@ -278,9 +330,9 @@ async function navigateHome() {
 }
 
 function navigateAddRecipe() {
-    console.log('adding new recipe');
-
+    // determine if website is being run locally or on github pages because the path is slightly different
     if (window.location.protocol === 'https:') {
+
         if (window.location.pathname !== '/recipe-book/recipe-form.html') {
             window.location.pathname = '/recipe-book/recipe-form.html';
         }
@@ -299,6 +351,8 @@ window.onload = (event) => {
     if ((window.location.protocol === 'https:' && (window.location.pathname === '/recipe-book/' || window.location.pathname === '/recipe-book/index.html')) 
         || (window.location.protocol === 'http:' && window.location.pathname === '/index.html')) {
         navigateHome();
-        getRandomIngredients();
+       
     }    
+
+    getRandomIngredients();
 };
