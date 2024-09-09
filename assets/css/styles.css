@@ -303,6 +303,7 @@ figcaption.blockquote-footer {
 
 
 
+
 /*
   IDs
 */
@@ -332,6 +333,10 @@ figcaption.blockquote-footer {
     height: auto; 
     max-width: 500px;
 }*/
+
+#aside-final {
+  padding-top: 20px; 
+}
 
 #second-card {
   border: none;

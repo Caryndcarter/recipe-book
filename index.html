@@ -38,7 +38,7 @@
         </nav>
     </header>
 
-    <main id="container">
+    <main class="d-flex justify-content-center container-fluid" id="container">
         
         
         
@@ -86,7 +86,10 @@
     </div>
 
     <template id="recipe-final2">
+     <div class="row">
+       <div class="col-md-6 mb-3">
         <section class="recipe-display">
+          <section>
             <aside id="aside-final">
               <img
                 class="headerimage"
@@ -94,8 +97,11 @@
               />
             </aside>
         </section>
-
-        <section> 
+        </section>
+        </div>
+        
+        <div class="col-md-6 mb-3">
+        <section class="recipe-final-display"> 
             <div class = "container mt-5">
             <div class="card">
                <div class="card-body">
@@ -114,6 +120,7 @@
                      </div>
                    </div>
                 </div>
+            
 
                    <div class="container my-4">
                     <div class="accordion" id="accordionThree">
@@ -161,7 +168,7 @@
             </div>
            
         </section>
-     
+      </div>
     </template>
 
     <script
