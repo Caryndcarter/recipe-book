@@ -107,8 +107,8 @@ function imageReplace () {
     let imageElement = document.querySelector('#recipeImage');
 
     if (imageInput.value){
-   
-        imageElement.src = imageInput.value; 
+      
+        imageElement.src = imageInput.value;
    
 
     } else {
