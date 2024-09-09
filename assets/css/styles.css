@@ -315,7 +315,7 @@ figcaption.blockquote-footer {
   display: flex; 
   flex-direction: row;
   gap: 20px; 
-  padding: 0 !important: 
+  padding: 0 !important; 
   max-width: 1200px; 
   margin: auto; 
 }
