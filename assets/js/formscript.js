@@ -3,7 +3,6 @@
 //Create variable for the aside and section elements
 
 const aside = document.querySelector('aside');
-const recipePicture = document.querySelector('.headerimage')
 const submitButton = document.querySelector('#final');
 const template = document.querySelector('#recipe-template');
 const finalTemplate = document.querySelector("#recipe-final");
@@ -107,13 +106,15 @@ function imageReplace () {
     let imageElement = document.querySelector('#recipeImage');
 
     if (imageInput.value){
-      
-        imageElement.src = imageInput.value;
    
+        imageElement.src = imageInput.value; 
+        imageElement.classList.add('img-fluid');
+  
 
     } else {
          
         imageElement.src = "assets/images/istockphoto-1490291782-612x612.jpg";
+        imageElement.classList.add('img-fluid');
     };
 
     buildRecipeElement();
@@ -131,8 +132,9 @@ function renderImage () {
     
     imageEl = document.createElement('img');  
     aside.appendChild(imageEl);
+    imageEl.classList.add('img-fluid');
     imageEl.id = "form-image";
-
+   
     if (imageInput.value){
    
         imageEl.src = imageInput.value; 

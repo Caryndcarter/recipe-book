@@ -9,6 +9,7 @@ let allRecipes = [];
 let allRandomIngredients = [];
 let newRandomIngredient = '';
 
+
 const storedRecipes = JSON.parse(localStorage.getItem("recipeStorage")) || [];
 if (storedRecipes !== null) {
     allRecipes = storedRecipes;
@@ -96,6 +97,7 @@ function recipeClicked(recipeId) {
         const imageEl = document.createElement('img');  
         asideEL.appendChild(imageEl);
         imageEl.id = "form-image";
+        imageEl.classList.add('img-fluid');
 
     if (allRecipes[recipeId].image) {
         imageEl.src = allRecipes[recipeId].image;  
@@ -348,6 +350,22 @@ headerTextHome.addEventListener("click", navigateHome);
 addRecipeButton.addEventListener("click", navigateAddRecipe);
 
 window.onload = (event) => {
+
+
+//On Load only show the first Step 1 form fields and not steps 2 or 3
+
+/*window.onload = function() {
+    ingredientInput.style.display = "none";
+    stepsInput.style.display = "none";
+    submitIngredient.style.display = "none";
+    submitStep.style.display = "none";
+    ingredientHeader.style.display = "none";
+    stepHeader.style.display = "none";
+    ingredientLabel.style.display = "none";
+    stepLabel.style.display = "none";
+//};
+*/
+
     if ((window.location.protocol === 'https:' && (window.location.pathname === '/recipe-book/' || window.location.pathname === '/recipe-book/index.html')) 
         || (window.location.protocol === 'http:' && window.location.pathname === '/index.html')) {
         navigateHome();
