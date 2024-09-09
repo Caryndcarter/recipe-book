@@ -102,22 +102,47 @@ function recordRecipe(event) {
 
 function imageReplace () {
 
+    let imageElement = document.querySelector('#recipeImage');
+
     if (imageInput.value){
-        renderImage(); 
-        buildRecipeElement();
+   
+        imageElement.src = imageInput.value; 
+   
 
     } else {
-        buildRecipeElement();
-    }
+         
+        imageElement.src = "assets/images/istockphoto-1490291782-612x612.jpg";
+    };
+
+    buildRecipeElement();
+
 };
+
+
+//Render the image on the final recipe screen after recipe form submission
 
 function renderImage () {
     aside.innerHTML = "";
 
-    const imageEl = document.createElement('img');  
+    let imageEl = document.createElement('img');  
+    
+    imageEl = document.createElement('img');  
     aside.appendChild(imageEl);
     imageEl.id = "form-image";
-    imageEl.src = imageInput.value; 
+
+    if (imageInput.value){
+   
+        imageEl.src = imageInput.value; 
+   
+
+    } else {
+         
+        imageEl.src = "assets/images/istockphoto-1490291782-612x612.jpg";
+        imageInput.value = "assets/images/istockphoto-1490291782-612x612.jpg";
+    };
+
+    imageEl.style.display = "inline"; 
+
 };
 
 
@@ -125,6 +150,10 @@ function renderImage () {
 // Build the Basic Recipe from the elements the user has provided.  
 
 function buildRecipeElement () {
+
+    let templateArea = document.querySelector('#basics');
+
+    if (!templateArea) {
 
     const template = document.getElementById("recipe-template");
   
@@ -140,6 +169,10 @@ function buildRecipeElement () {
     recipeInfo.querySelector('#final').style.display = 'none';
   
     aside.appendChild(recipeInfo);
+
+    }
+
+
 };
 
 
@@ -221,6 +254,10 @@ function loadLocalStorage () {
         steps: stepsArray
     }
 
+    if (recipe.image.length === 0) {
+        recipe.image = "assets/images/istockphoto-1490291782-612x612.jpg";
+    }
+
     storedRecipes.push(recipe);
 
     localStorage.setItem('recipeStorage', JSON.stringify(storedRecipes));
@@ -229,46 +266,6 @@ function loadLocalStorage () {
 
 };
 
-/*
-//When the view final recipe button is clicked, use the final recipe template and render the final recipe.  Clear the right section of the screen and append the final recipe.  
-
-function buildFinalRecipe () {
-
-    let storedRecipes = JSON.parse(localStorage.getItem('recipeStorage')) || []; 
-
-    const finalTemplate = document.getElementById("recipe-final");
-  
-    const recipeFinal = finalTemplate.content.cloneNode(true);
-
-    recipeFinal.querySelector('#final-title').textContent = titleInput.value; 
-    recipeFinal.querySelector('#final-description').textContent = descriptionInput.value; 
-    recipeFinal.querySelector('#final-servings').textContent = servingsInput.value;
-    recipeFinal.querySelector('#final-time').textContent = timeInput.value; 
-    recipeFinal.querySelector('#recipeId').textContent = storedRecipes.length -1; 
-
-    for (let i = 0; i <ingredientsArray.length; i++) {
-        const ingItem = document.createElement('li');
-        const ingValue = ingredientsArray[i]; 
-        ingItem.textContent = ingValue; 
-        recipeFinal.querySelector('#final-ingredients ul').appendChild(ingItem);
-    }      
-
-    for (let i = 0; i <stepsArray.length; i++) {
-        const stepItem = document.createElement('li');
-        const stepsValue = stepsArray[i]; 
-        stepItem.textContent = stepsValue; 
-        recipeFinal.querySelector('#final-steps ol').appendChild(stepItem);
-    }   
-
-    renderImage(); 
-
-    formSection.innerHTML = "";
-    formSection.appendChild(recipeFinal);
-
-
-};
-  
-*/
 
 window.onload = (event) => {
     getRandomIngredients(); 
