@@ -10,14 +10,11 @@ let allRandomIngredients = [];
 let newRandomIngredient = '';
 
 const storedRecipes = JSON.parse(localStorage.getItem("recipeStorage")) || [];
-console.log(storedRecipes);
 if (storedRecipes !== null) {
     allRecipes = storedRecipes;
 };
 
 function recipeClicked(recipeId) {
-    console.log(`recipe ${recipeId} clicked`);
-
     mainEl.innerHTML = ""; 
     btnSurprise.style.display = 'inline';
 
@@ -134,7 +131,7 @@ async function getStaticData() {
             return res.json();
         })
         .then((data) => {
-            console.log(data.staticRecipes)
+            // add all static recipes to the allRecipes array and update local storage
             for (let i = 0; i < data.staticRecipes.length; i++) {
                 const element = data.staticRecipes[i];
                 allRecipes.push(element);                
@@ -157,7 +154,7 @@ async function getRandomIngredients() {
             return res.json();
         })
         .then((data) => {
-            console.log(data.randomIngredients)
+            // load random ingredients list into allRandomIngredients array
             for (let i = 0; i < data.randomIngredients.length; i++) {
                 const element = data.randomIngredients[i];
                 allRandomIngredients.push(element);                
@@ -170,8 +167,6 @@ async function getRandomIngredients() {
 function createRecipeCards() {
     // clear the main element before repopulating
     mainEl.innerHTML = '';
-
-    console.log('creating recipe cards');
 
     // create and append framework for the card elements
     const cardFramework = document.createElement('div');
@@ -196,9 +191,13 @@ function createRecipeCards() {
                 recipeClicked(i);
             });
 
-            // create and append recipe image
+            // create and append recipe image if there is an image associated with the recipe            
             let recipeImage = document.createElement('img');
-            recipeImage.setAttribute('src', recipe.image);
+            if (recipe.image !== '' && recipe.image !== null) {
+                recipeImage.setAttribute('src', recipe.image);
+            } else {
+                recipeImage.setAttribute('src', 'assets/images/istockphoto-1490291782-612x612.jpg')
+            }
             recipeImage.setAttribute('class', 'card-img-top');
             recipeImage.setAttribute('alt', 'Recipe Image');
             newCard.append(recipeImage);
@@ -246,9 +245,7 @@ function createRecipeCards() {
 }
 
 async function navigateHome() {
-    console.log('navigating home');
-
-    console.log(window.location);
+    // determine if website is being run locally or on github pages because the path is slightly different
     if (window.location.protocol === 'https:') {
         if (window.location.pathname !== '/recipe-book/index.html') {
             window.location.pathname = '/recipe-book/index.html';
@@ -269,7 +266,6 @@ async function navigateHome() {
     
     // fetch static recipes from json file if there are no recipes already in the allRecipes array
     if (allRecipes === null || allRecipes.length < 3) {
-        console.log('no recipes to log; getting static data');
         // if there are less than three recipes (representing at least the static data), clear the allRecipes array and get the static data
         allRecipes = [];
         localStorage.setItem('recipeStorage', JSON.stringify(allRecipes));
@@ -278,9 +274,9 @@ async function navigateHome() {
 }
 
 function navigateAddRecipe() {
-    console.log('adding new recipe');
-
+    // determine if website is being run locally or on github pages because the path is slightly different
     if (window.location.protocol === 'https:') {
+
         if (window.location.pathname !== '/recipe-book/recipe-form.html') {
             window.location.pathname = '/recipe-book/recipe-form.html';
         }
