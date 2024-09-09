@@ -125,13 +125,14 @@ figure {
 }
 
 main {
-margin-top: 70px;
-width: 100%; 
-  margin: 0 auto;
+  margin-top: 0px;
+  width: 100%; 
+  height: 100%;
+  margin: 0;
+  padding: 0 !important; 
   display: flex;
   justify-content: flex-start;
   flex-grow: 1;
-  padding: 20px;
   background-color: var(--main-alt);
   margin-bottom: 70px;
 }
@@ -285,9 +286,9 @@ figcaption.blockquote-footer {
 }
 
 .headerimage {
-    width: 80%;
+    width: 100%;
     height: auto;
-    max-width: 700px;
+    max-width: 400px;
 }
 
 .clickableRecipe {
@@ -300,9 +301,20 @@ figcaption.blockquote-footer {
   border: 1px solid rgba(33,33,33,.6);
 }
 
+
+
 /*
   IDs
 */
+
+#pageContent {
+  display: flex; 
+  flex-direction: row;
+  gap: 20px; 
+  padding: 0 !important: 
+  max-width: 1200px; 
+  margin: auto; 
+}
 
 #logo {
     width: 10%; 
@@ -315,11 +327,11 @@ figcaption.blockquote-footer {
     opacity: .75;
   }
 
-#form-image {
+/*#form-image {
     width: 500px;
     height: auto; 
     max-width: 500px;
-}
+}*/
 
 #second-card {
   border: none;
@@ -384,4 +396,13 @@ figcaption.blockquote-footer {
 .accordion .accordion-button:focus {
   outline: 2px solid #008080;
   box-shadow: 0 0 0 0.25rem #003434(51, 255, 248, 0.574); 
+}
+
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  #pageContent {
+      flex-direction: column; 
+      align-items: stretch; 
+  }
 }
