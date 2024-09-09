@@ -286,9 +286,9 @@ figcaption.blockquote-footer {
 }
 
 .headerimage {
-    width: 80%;
+    width: 100%;
     height: auto;
-    max-width: 700px;
+    max-width: 400px;
 }
 
 .clickableRecipe {
@@ -327,11 +327,11 @@ figcaption.blockquote-footer {
     opacity: .75;
   }
 
-#form-image {
+/*#form-image {
     width: 500px;
     height: auto; 
     max-width: 500px;
-}
+}*/
 
 #second-card {
   border: none;
