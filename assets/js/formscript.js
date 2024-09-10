@@ -99,11 +99,24 @@ function recordRecipe(event) {
  
 };
 
+
+  let isValid = function(urlTocheck="", defaultValue=false){
+    var image = new Image();
+    image.src = urlTocheck;
+    if (image.width == 0) {
+       return defaultValue;
+    } else {
+       return urlTocheck;
+    }
+ }
+
 //Show the image the user has provided instead of the stock image. And call the buildRecipeElement function.  Leave the stock image if no image is provided.  
 
 function imageReplace () {
 
     let imageElement = document.querySelector('#recipeImage');
+
+    if (isValid(imageInput.value)) {
 
     if (imageInput.value){
    
@@ -117,7 +130,15 @@ function imageReplace () {
         imageElement.classList.add('img-fluid');
     };
 
+ 
+    } else {
+        imageElement.src = "assets/images/istockphoto-1490291782-612x612.jpg";
+        imageElement.classList.add('img-fluid');
+
+    }
+
     buildRecipeElement();
+
 };
        
    
@@ -135,7 +156,7 @@ function renderImage () {
     imageEl.classList.add('img-fluid');
     imageEl.id = "form-image";
    
-    if (imageInput.value){
+    if (imageInput.value && isValid(imageInput.value)){
    
         imageEl.src = imageInput.value; 
    
@@ -175,7 +196,6 @@ function buildRecipeElement () {
   
     aside.appendChild(recipeInfo);
 
-    }  else {
 
         document.querySelector('#h2Id').textContent = titleInput.value;
         document.querySelector('#description-quote').textContent = descriptionInput.value;
